@@ -12,149 +12,712 @@
       "isFeedback": false,
       "isEnd": false,
       "choices": [
-        { "id": "start_btn", "text": "Comenzar Expedicion", "nextNode": "escena_1_cultura", "points": 0, "pillarPoints": {}, "isCorrect": true, "sfx": "/assets/audio/click.mp3" }
+        { "id": "start_btn", "text": "Comenzar Expedicion", "nextNode": "c1_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": true, "sfx": "/assets/audio/click.mp3" }
       ]
     },
+
     {
-      "id": "escena_1_cultura",
+      "id": "c1_dilema_1",
       "nodeType": "dilemma",
       "pillar": "Cultura",
       "mediaType": "image",
       "mediaUrl": "/assets/images/cultura_dilema.svg",
       "audioBgm": "/assets/audio/misterio.mp3",
-      "title": "Dilema de Cultura",
-      "text": "Llegas a una bifurcacion. Un companero de tu escuadron ha dejado caer su mapa y parece desorientado. Tu reloj marca que el tiempo se agota. Que decides hacer?",
+      "title": "Capitulo 1 - Dilema 1: El mapa dividido",
+      "text": "Dos exploradores del equipo tienen versiones distintas del mapa. El tiempo corre y la ruta al campamento no es clara. Que haces?",
       "isFeedback": false,
       "isEnd": false,
       "choices": [
-        { "id": "cultura_fail_aislamiento", "text": "Avanzar solo para asegurar que al menos uno llegue a tiempo.", "nextNode": "fail_cultura_aislamiento", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "aislamiento", "sfx": "/assets/audio/error.mp3" },
-        { "id": "cultura_fail_conflicto", "text": "Gritarle que se apure y criticar su falta de preparacion.", "nextNode": "fail_cultura_conflicto", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "conflicto_valores", "sfx": "/assets/audio/error.mp3" },
-        { "id": "cultura_correct", "text": "Detenerte, compartir tu mapa y trazar una ruta juntos.", "nextNode": "escena_2_sst", "points": 10, "pillarPoints": { "Cultura": 10 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
-        { "id": "cultura_fail_deshonestidad", "text": "Tomar un atajo prohibido en el mapa para compensar el tiempo.", "nextNode": "fail_cultura_deshonestidad", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "deshonestidad", "sfx": "/assets/audio/error.mp3" }
+        { "id": "c1_d1_a", "text": "Ignorar la discusion y avanzar con tu propio criterio.", "nextNode": "c1_fail_1A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "comunicacion_rota", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c1_d1_b", "text": "Elegir al explorador mas cercano y descalificar al otro sin escucharlo.", "nextNode": "c1_fail_1B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "egoismo", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c1_d1_c", "text": "Reunir al equipo, comparar ambas versiones y acordar una sola ruta validada.", "nextNode": "c1_dilema_2", "points": 1000, "pillarPoints": { "Cultura": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
+        { "id": "c1_d1_d", "text": "Enviar mensajes contradictorios para que cada grupo pruebe caminos distintos.", "nextNode": "c1_fail_1C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "desinformacion", "sfx": "/assets/audio/error.mp3" }
       ]
     },
     {
-      "id": "fail_cultura_aislamiento",
+      "id": "c1_fail_1A",
       "nodeType": "feedback_fail",
       "pillar": "Cultura",
-      "failType": "aislamiento",
+      "failType": "comunicacion_rota",
       "mediaType": "image",
       "mediaUrl": "/assets/images/cultura_error.svg",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Error Critico: Aislamiento",
-      "text": "En Avellano, el exito individual no existe si el equipo fracasa. Dejar a un companero atras debilita toda la operacion.",
-      "retryNode": "escena_1_cultura",
+      "title": "Desviacion: Comunicacion rota",
+      "text": "Actuar sin alinear al equipo rompe la coordinacion y aumenta el riesgo operativo.",
+      "retryNode": "c1_dilema_1",
       "isFeedback": true,
       "isEnd": false,
       "choices": [
-        { "id": "retry_cultura_1", "text": "Reevaluar la situacion", "nextNode": "escena_1_cultura", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        { "id": "c1_retry_1A", "text": "Entendido", "nextNode": "c1_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
       ]
     },
     {
-      "id": "fail_cultura_conflicto",
+      "id": "c1_fail_1B",
       "nodeType": "feedback_fail",
       "pillar": "Cultura",
-      "failType": "conflicto_valores",
+      "failType": "egoismo",
       "mediaType": "image",
       "mediaUrl": "/assets/images/cultura_error.svg",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Error Critico: Conflicto de Valores",
-      "text": "El respeto es fundamental. Fomentar un ambiente hostil destruye la moral del equipo y va en contra del ADN corporativo de Avellano.",
-      "retryNode": "escena_1_cultura",
+      "title": "Desviacion: Egoismo",
+      "text": "Invalidar aportes sin evidencia deteriora la confianza. La cultura exige respeto y colaboracion.",
+      "retryNode": "c1_dilema_1",
       "isFeedback": true,
       "isEnd": false,
       "choices": [
-        { "id": "retry_cultura_2", "text": "Reevaluar la situacion", "nextNode": "escena_1_cultura", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        { "id": "c1_retry_1B", "text": "Entendido", "nextNode": "c1_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
       ]
     },
     {
-      "id": "fail_cultura_deshonestidad",
+      "id": "c1_fail_1C",
       "nodeType": "feedback_fail",
       "pillar": "Cultura",
-      "failType": "deshonestidad",
+      "failType": "desinformacion",
       "mediaType": "image",
       "mediaUrl": "/assets/images/cultura_error.svg",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Error Critico: Deshonestidad",
-      "text": "La integridad no se negocia. Tomar atajos prohibidos compromete la calidad y la seguridad de toda la mision.",
-      "retryNode": "escena_1_cultura",
+      "title": "Desviacion: Desinformacion",
+      "text": "Mensajes inconsistentes provocan caos. Un equipo de alto desempeno comunica con una sola voz.",
+      "retryNode": "c1_dilema_1",
       "isFeedback": true,
       "isEnd": false,
       "choices": [
-        { "id": "retry_cultura_3", "text": "Reevaluar la situacion", "nextNode": "escena_1_cultura", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        { "id": "c1_retry_1C", "text": "Entendido", "nextNode": "c1_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+
+    {
+      "id": "c1_dilema_2",
+      "nodeType": "dilemma",
+      "pillar": "Cultura",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_dilema.svg",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Capitulo 1 - Dilema 2: Turno de guardia",
+      "text": "Un companero reporta cansancio extremo antes de tomar su turno de vigilancia nocturna. Que decides?",
+      "isFeedback": false,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_d2_a", "text": "Pedirle que cumpla igual para no alterar el plan.", "nextNode": "c1_fail_2A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "falta_escucha", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c1_d2_b", "text": "Asumir que exagera y burlarte del reporte frente al equipo.", "nextNode": "c1_fail_2B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "juicio_apresurado", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c1_d2_c", "text": "Redistribuir el turno, evaluar riesgo y priorizar seguridad del equipo.", "nextNode": "c1_dilema_3", "points": 1000, "pillarPoints": { "Cultura": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
+        { "id": "c1_d2_d", "text": "Ocultar la novedad para evitar discusiones en la reunion diaria.", "nextNode": "c1_fail_2C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "ocultamiento", "sfx": "/assets/audio/error.mp3" }
       ]
     },
     {
-      "id": "escena_2_sst",
+      "id": "c1_fail_2A",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "falta_escucha",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Falta de escucha",
+      "text": "Ignorar alertas humanas rompe el cuidado mutuo. Escuchar es una competencia critica de equipo.",
+      "retryNode": "c1_dilema_2",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_retry_2A", "text": "Entendido", "nextNode": "c1_dilema_2", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c1_fail_2B",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "juicio_apresurado",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Juicio apresurado",
+      "text": "Ridiculizar reportes destruye la confianza psicologica y reduce la calidad de decisiones.",
+      "retryNode": "c1_dilema_2",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_retry_2B", "text": "Entendido", "nextNode": "c1_dilema_2", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c1_fail_2C",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "ocultamiento",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Ocultamiento",
+      "text": "Ocultar informacion operativa afecta la transparencia y compromete a todo el frente de trabajo.",
+      "retryNode": "c1_dilema_2",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_retry_2C", "text": "Entendido", "nextNode": "c1_dilema_2", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+
+    {
+      "id": "c1_dilema_3",
+      "nodeType": "dilemma",
+      "pillar": "Cultura",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_dilema.svg",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Capitulo 1 - Dilema 3: Decision de cruce",
+      "text": "El equipo debe cruzar un paso estrecho. Hay tres propuestas distintas y el clima empeora. Como decides?",
+      "isFeedback": false,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_d3_a", "text": "Improvisar sin consenso para ganar tiempo.", "nextNode": "c1_fail_3A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "improvisacion_sin_consenso", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c1_d3_b", "text": "Imponer tu criterio por jerarquia sin escuchar riesgos.", "nextNode": "c1_fail_3B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "imposicion_autoritaria", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c1_d3_c", "text": "Facilitar una decision rapida con roles claros y consenso operativo.", "nextNode": "c1_dilema_4", "points": 1000, "pillarPoints": { "Cultura": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
+        { "id": "c1_d3_d", "text": "Permitir rumores de peligro sin validar fuentes.", "nextNode": "c1_fail_3C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "rumor_operativo", "sfx": "/assets/audio/error.mp3" }
+      ]
+    },
+    {
+      "id": "c1_fail_3A",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "improvisacion_sin_consenso",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Improvisacion sin consenso",
+      "text": "La velocidad sin alineacion aumenta errores. El equipo debe acordar antes de ejecutar.",
+      "retryNode": "c1_dilema_3",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_retry_3A", "text": "Entendido", "nextNode": "c1_dilema_3", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c1_fail_3B",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "imposicion_autoritaria",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Imposicion autoritaria",
+      "text": "Liderar no es imponer. La autoridad efectiva integra criterio tecnico y voz del equipo.",
+      "retryNode": "c1_dilema_3",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_retry_3B", "text": "Entendido", "nextNode": "c1_dilema_3", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c1_fail_3C",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "rumor_operativo",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Rumor operativo",
+      "text": "Decidir con rumores provoca caos. La cultura exige hechos, trazabilidad y comunicacion responsable.",
+      "retryNode": "c1_dilema_3",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_retry_3C", "text": "Entendido", "nextNode": "c1_dilema_3", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+
+    {
+      "id": "c1_dilema_4",
+      "nodeType": "dilemma",
+      "pillar": "Cultura",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_dilema.svg",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Capitulo 1 - Dilema 4: Recursos limitados",
+      "text": "Solo queda un kit medico y dos frentes lo solicitan al mismo tiempo. Cual es tu accion?",
+      "isFeedback": false,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_d4_a", "text": "Entregarlo al frente que te cae mejor, sin criterios.", "nextNode": "c1_fail_4A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "exclusion_equipo", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c1_d4_b", "text": "Guardar el recurso para tu cuadrilla por si acaso.", "nextNode": "c1_fail_4B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "prioridad_personal", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c1_d4_c", "text": "Priorizar por criticidad, comunicar criterio y coordinar reposicion inmediata.", "nextNode": "c1_dilema_5", "points": 1000, "pillarPoints": { "Cultura": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
+        { "id": "c1_d4_d", "text": "Prometerlo a ambos frentes y resolver despues.", "nextNode": "c1_fail_4C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "promesa_incumplida", "sfx": "/assets/audio/error.mp3" }
+      ]
+    },
+    {
+      "id": "c1_fail_4A",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "exclusion_equipo",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Exclusion del equipo",
+      "text": "Asignar recursos por preferencia personal genera inequidad y friccion entre equipos.",
+      "retryNode": "c1_dilema_4",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_retry_4A", "text": "Entendido", "nextNode": "c1_dilema_4", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c1_fail_4B",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "prioridad_personal",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Prioridad personal",
+      "text": "Acaparar recursos rompe la colaboracion. La prioridad es el impacto global de la operacion.",
+      "retryNode": "c1_dilema_4",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_retry_4B", "text": "Entendido", "nextNode": "c1_dilema_4", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c1_fail_4C",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "promesa_incumplida",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Promesa incumplida",
+      "text": "Prometer sin respaldo dania la credibilidad del liderazgo y la disciplina operativa.",
+      "retryNode": "c1_dilema_4",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_retry_4C", "text": "Entendido", "nextNode": "c1_dilema_4", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+
+    {
+      "id": "c1_dilema_5",
+      "nodeType": "dilemma",
+      "pillar": "Cultura",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_dilema.svg",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Capitulo 1 - Dilema 5: Cierre del campamento",
+      "text": "Antes de avanzar al siguiente territorio, debes cerrar hallazgos, lecciones y pendientes entre areas. Como procedes?",
+      "isFeedback": false,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_d5_a", "text": "Cerrar solo con tu area y dejar al resto para despues.", "nextNode": "c1_fail_5A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "conflicto_interareas", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c1_d5_b", "text": "Priorizar resultados rapidos aunque contradigan los valores acordados.", "nextNode": "c1_fail_5B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "desalineacion_valores", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c1_d5_c", "text": "Realizar cierre transversal con compromisos claros y lecciones compartidas.", "nextNode": "c2_dilema_1", "points": 1000, "pillarPoints": { "Cultura": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
+        { "id": "c1_d5_d", "text": "Evitar documentar errores para proteger reputaciones individuales.", "nextNode": "c1_fail_5C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "negacion_responsabilidad", "sfx": "/assets/audio/error.mp3" }
+      ]
+    },
+    {
+      "id": "c1_fail_5A",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "conflicto_interareas",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Conflicto entre areas",
+      "text": "Sin cierre transversal se pierden dependencias criticas y aparecen reprocesos.",
+      "retryNode": "c1_dilema_5",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_retry_5A", "text": "Entendido", "nextNode": "c1_dilema_5", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c1_fail_5B",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "desalineacion_valores",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Desalineacion de valores",
+      "text": "Los resultados sin cultura no son sostenibles. El como logramos importa tanto como el que.",
+      "retryNode": "c1_dilema_5",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_retry_5B", "text": "Entendido", "nextNode": "c1_dilema_5", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c1_fail_5C",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "negacion_responsabilidad",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Negacion de responsabilidad",
+      "text": "Ocultar errores impide aprender. La mejora continua requiere verdad y trazabilidad.",
+      "retryNode": "c1_dilema_5",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c1_retry_5C", "text": "Entendido", "nextNode": "c1_dilema_5", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+
+    {
+      "id": "c2_dilema_1",
       "nodeType": "dilemma",
       "pillar": "SST",
       "mediaType": "image",
       "mediaUrl": "/assets/images/puente_inestable.svg",
       "audioBgm": "/assets/audio/suspenso.mp3",
-      "title": "Dilema de SST",
-      "text": "Encuentran un puente colgante sobre un abismo. Es la unica ruta, pero no tiene linea de vida instalada y el viento es fuerte. Como procedes?",
+      "title": "Capitulo 2 - Dilema 1: Ingreso al tunel",
+      "text": "El equipo debe entrar a un tunel con baja visibilidad y posible presencia de gases. Que haces antes de autorizar el ingreso?",
       "isFeedback": false,
       "isEnd": false,
       "choices": [
-        { "id": "sst_fail_caida", "text": "Cruzar con cuidado confiando en el equilibrio.", "nextNode": "fail_sst_caida", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "caida_altura", "sfx": "/assets/audio/error.mp3" },
-        { "id": "sst_fail_electrico", "text": "Agarrarse de un cable de alta tension expuesto para no caer.", "nextNode": "fail_sst_electrico", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "quemadura_electrica", "sfx": "/assets/audio/error.mp3" },
-        { "id": "sst_fail_asfixia", "text": "Usar mascaras antigas pesadas que bloquean la vision para cruzar.", "nextNode": "fail_sst_asfixia", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "asfixia", "sfx": "/assets/audio/error.mp3" },
-        { "id": "sst_correct", "text": "Reportar el riesgo e instalar un arnes a un punto de anclaje seguro.", "nextNode": "escena_3_calidad", "points": 10, "pillarPoints": { "SST": 10 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" }
+        { "id": "c2_d1_a", "text": "Ingresar de inmediato para no perder tiempo.", "nextNode": "c2_fail_1A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "omision_permiso_trabajo", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c2_d1_b", "text": "Enviar solo a un voluntario sin medicion previa.", "nextNode": "c2_fail_1B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "atm_no_verificada", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c2_d1_c", "text": "Aplicar permiso de trabajo, medir atmosfera y definir control de ingreso.", "nextNode": "c2_dilema_2", "points": 1000, "pillarPoints": { "SST": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
+        { "id": "c2_d1_d", "text": "Confiar en experiencia previa y omitir checklists.", "nextNode": "c2_fail_1C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "exceso_confianza", "sfx": "/assets/audio/error.mp3" }
       ]
     },
     {
-      "id": "fail_sst_caida",
+      "id": "c2_fail_1A",
       "nodeType": "feedback_fail",
       "pillar": "SST",
-      "failType": "caida_altura",
+      "failType": "omision_permiso_trabajo",
       "mediaType": "image",
       "mediaUrl": "/assets/images/puente_roto.svg",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Incidente: Riesgo de Caida",
-      "text": "Nunca asumas que tu equilibrio es suficiente. El trabajo en alturas sin arnes y linea de vida es una violacion directa a los protocolos de Avellano.",
-      "retryNode": "escena_2_sst",
+      "title": "Desviacion SST: Permiso omitido",
+      "text": "Trabajar sin permiso formal elimina barreras de control y expone al equipo a incidentes criticos.",
+      "retryNode": "c2_dilema_1",
       "isFeedback": true,
       "isEnd": false,
       "choices": [
-        { "id": "retry_sst_1", "text": "Revisar Protocolos de Altura", "nextNode": "escena_2_sst", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        { "id": "c2_retry_1A", "text": "Entendido", "nextNode": "c2_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
       ]
     },
     {
-      "id": "fail_sst_electrico",
+      "id": "c2_fail_1B",
       "nodeType": "feedback_fail",
       "pillar": "SST",
-      "failType": "quemadura_electrica",
+      "failType": "atm_no_verificada",
       "mediaType": "image",
       "mediaUrl": "/assets/images/puente_roto.svg",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Incidente: Riesgo Electrico",
-      "text": "Ignorar la naturaleza de los materiales circundantes es letal. Tocar cables sin equipo dielectrico o desenergizacion previa causa quemaduras graves o electrocucion.",
-      "retryNode": "escena_2_sst",
+      "title": "Desviacion SST: Atmosfera no verificada",
+      "text": "Sin medicion atmosferica no hay evidencia de condiciones seguras. El riesgo de asfixia o intoxicacion aumenta.",
+      "retryNode": "c2_dilema_1",
       "isFeedback": true,
       "isEnd": false,
       "choices": [
-        { "id": "retry_sst_2", "text": "Revisar Protocolos Electricos", "nextNode": "escena_2_sst", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        { "id": "c2_retry_1B", "text": "Entendido", "nextNode": "c2_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
       ]
     },
     {
-      "id": "fail_sst_asfixia",
+      "id": "c2_fail_1C",
       "nodeType": "feedback_fail",
       "pillar": "SST",
-      "failType": "asfixia",
+      "failType": "exceso_confianza",
       "mediaType": "image",
       "mediaUrl": "/assets/images/puente_roto.svg",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Incidente: Uso Incorrecto de EPP",
-      "text": "Usar el Equipo de Proteccion Personal incorrecto crea nuevos riesgos como perdida de vision y fatiga extrema.",
-      "retryNode": "escena_2_sst",
+      "title": "Desviacion SST: Exceso de confianza",
+      "text": "La experiencia no reemplaza el control operativo. Los procedimientos existen para prevenir eventos graves.",
+      "retryNode": "c2_dilema_1",
       "isFeedback": true,
       "isEnd": false,
       "choices": [
-        { "id": "retry_sst_3", "text": "Revisar Uso de EPP", "nextNode": "escena_2_sst", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        { "id": "c2_retry_1C", "text": "Entendido", "nextNode": "c2_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+
+    {
+      "id": "c2_dilema_2",
+      "nodeType": "dilemma",
+      "pillar": "SST",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_inestable.svg",
+      "audioBgm": "/assets/audio/suspenso.mp3",
+      "title": "Capitulo 2 - Dilema 2: Seleccion de EPP",
+      "text": "Se aproxima una zona con polvo en suspension, ruido alto y riesgo de impacto menor. Como defines el EPP?",
+      "isFeedback": false,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_d2_a", "text": "Usar solo casco para agilizar la tarea.", "nextNode": "c2_fail_2A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "epp_incompleto", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c2_d2_b", "text": "Permitir que cada persona elija su EPP por comodidad.", "nextNode": "c2_fail_2B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "criterio_no_estandar", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c2_d2_c", "text": "Exigir EPP segun matriz de riesgo: casco, gafas, respirador y proteccion auditiva.", "nextNode": "c2_dilema_3", "points": 1000, "pillarPoints": { "SST": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
+        { "id": "c2_d2_d", "text": "Reutilizar EPP danado para no detener la operacion.", "nextNode": "c2_fail_2C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "epp_deteriorado", "sfx": "/assets/audio/error.mp3" }
       ]
     },
     {
-      "id": "escena_3_calidad",
+      "id": "c2_fail_2A",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "epp_incompleto",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion SST: EPP incompleto",
+      "text": "Un riesgo multiple exige barreras multiples. El EPP parcial deja al personal expuesto.",
+      "retryNode": "c2_dilema_2",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_retry_2A", "text": "Entendido", "nextNode": "c2_dilema_2", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c2_fail_2B",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "criterio_no_estandar",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion SST: Criterio no estandar",
+      "text": "La seguridad no puede depender de preferencias individuales. Se debe cumplir el estandar definido.",
+      "retryNode": "c2_dilema_2",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_retry_2B", "text": "Entendido", "nextNode": "c2_dilema_2", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c2_fail_2C",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "epp_deteriorado",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion SST: EPP deteriorado",
+      "text": "Un EPP en mal estado genera falsa seguridad. Debe reemplazarse antes de exponer al equipo.",
+      "retryNode": "c2_dilema_2",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_retry_2C", "text": "Entendido", "nextNode": "c2_dilema_2", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+
+    {
+      "id": "c2_dilema_3",
+      "nodeType": "dilemma",
+      "pillar": "SST",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_inestable.svg",
+      "audioBgm": "/assets/audio/suspenso.mp3",
+      "title": "Capitulo 2 - Dilema 3: Trabajo en altura",
+      "text": "Para recuperar un artefacto debes trabajar sobre una plataforma elevada sin barandas completas. Como procedes?",
+      "isFeedback": false,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_d3_a", "text": "Subir de inmediato y sostenerte del borde.", "nextNode": "c2_fail_3A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "sin_linea_vida", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c2_d3_b", "text": "Usar arnes sin verificar punto de anclaje.", "nextNode": "c2_fail_3B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "anclaje_no_certificado", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c2_d3_c", "text": "Delimitar area, inspeccionar anclaje certificado y ejecutar con sistema anticaidas.", "nextNode": "c2_dilema_4", "points": 1000, "pillarPoints": { "SST": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
+        { "id": "c2_d3_d", "text": "Retirar el arnes para moverte mas rapido en la maniobra final.", "nextNode": "c2_fail_3C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "retiro_epp_critico", "sfx": "/assets/audio/error.mp3" }
+      ]
+    },
+    {
+      "id": "c2_fail_3A",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "sin_linea_vida",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion SST: Sin linea de vida",
+      "text": "En altura, no existe margen de error. Sin sistema anticaidas el riesgo es inaceptable.",
+      "retryNode": "c2_dilema_3",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_retry_3A", "text": "Entendido", "nextNode": "c2_dilema_3", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c2_fail_3B",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "anclaje_no_certificado",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion SST: Anclaje no certificado",
+      "text": "El arnes sin anclaje certificado no protege. La integridad del sistema debe verificarse completa.",
+      "retryNode": "c2_dilema_3",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_retry_3B", "text": "Entendido", "nextNode": "c2_dilema_3", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c2_fail_3C",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "retiro_epp_critico",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion SST: Retiro de EPP critico",
+      "text": "Quitar protecciones en la etapa final es cuando mas ocurren eventos por exceso de confianza.",
+      "retryNode": "c2_dilema_3",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_retry_3C", "text": "Entendido", "nextNode": "c2_dilema_3", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+
+    {
+      "id": "c2_dilema_4",
+      "nodeType": "dilemma",
+      "pillar": "SST",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_inestable.svg",
+      "audioBgm": "/assets/audio/suspenso.mp3",
+      "title": "Capitulo 2 - Dilema 4: Riesgo electrico",
+      "text": "Una compuerta metalica quedo energizada por un cable danado. El equipo necesita abrirla para continuar. Que haces?",
+      "isFeedback": false,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_d4_a", "text": "Abrir la compuerta con guantes comunes.", "nextNode": "c2_fail_4A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "contacto_directo", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c2_d4_b", "text": "Separar el cable con herramienta metalica improvisada.", "nextNode": "c2_fail_4B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "herramienta_inadecuada", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c2_d4_c", "text": "Aislar zona, aplicar bloqueo-etiquetado (LOTO) y verificar ausencia de tension.", "nextNode": "c2_dilema_5", "points": 1000, "pillarPoints": { "SST": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
+        { "id": "c2_d4_d", "text": "Pedir a un tercero que pruebe rapidamente si da corriente.", "nextNode": "c2_fail_4C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "prueba_empirica_peligrosa", "sfx": "/assets/audio/error.mp3" }
+      ]
+    },
+    {
+      "id": "c2_fail_4A",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "contacto_directo",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion SST: Contacto directo",
+      "text": "El contacto directo con partes energizadas puede causar lesiones fatales en segundos.",
+      "retryNode": "c2_dilema_4",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_retry_4A", "text": "Entendido", "nextNode": "c2_dilema_4", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c2_fail_4B",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "herramienta_inadecuada",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion SST: Herramienta inadecuada",
+      "text": "Herramientas no aisladas incrementan el riesgo electrico y pueden agravar el incidente.",
+      "retryNode": "c2_dilema_4",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_retry_4B", "text": "Entendido", "nextNode": "c2_dilema_4", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c2_fail_4C",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "prueba_empirica_peligrosa",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion SST: Prueba empirica peligrosa",
+      "text": "Nunca se valida energia con personas. Se usan instrumentos y procedimientos de bloqueo seguros.",
+      "retryNode": "c2_dilema_4",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_retry_4C", "text": "Entendido", "nextNode": "c2_dilema_4", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+
+    {
+      "id": "c2_dilema_5",
+      "nodeType": "dilemma",
+      "pillar": "SST",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_inestable.svg",
+      "audioBgm": "/assets/audio/suspenso.mp3",
+      "title": "Capitulo 2 - Dilema 5: Reporte de incidente",
+      "text": "Un operador sufre una lesion menor y el supervisor propone continuar sin reportar para no retrasar la meta. Como respondes?",
+      "isFeedback": false,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_d5_a", "text": "Aceptar y seguir, porque fue un evento pequeno.", "nextNode": "c2_fail_5A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "subregistro_incidente", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c2_d5_b", "text": "Registrar solo si el operador insiste formalmente.", "nextNode": "c2_fail_5B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "reporte_condicionado", "sfx": "/assets/audio/error.mp3" },
+        { "id": "c2_d5_c", "text": "Atender al lesionado, reportar de inmediato e iniciar investigacion de causa raiz.", "nextNode": "c3_dilema_1", "points": 1000, "pillarPoints": { "SST": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
+        { "id": "c2_d5_d", "text": "Modificar el registro para que parezca una observacion sin lesion.", "nextNode": "c2_fail_5C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "manipulacion_reporte", "sfx": "/assets/audio/error.mp3" }
+      ]
+    },
+    {
+      "id": "c2_fail_5A",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "subregistro_incidente",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion SST: Subregistro de incidente",
+      "text": "Lo que no se reporta no se corrige. El subregistro repite eventos y aumenta severidad futura.",
+      "retryNode": "c2_dilema_5",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_retry_5A", "text": "Entendido", "nextNode": "c2_dilema_5", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c2_fail_5B",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "reporte_condicionado",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion SST: Reporte condicionado",
+      "text": "Reportar incidentes no depende de preferencias. Es una obligacion para proteger a todo el equipo.",
+      "retryNode": "c2_dilema_5",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_retry_5B", "text": "Entendido", "nextNode": "c2_dilema_5", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "c2_fail_5C",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "manipulacion_reporte",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion SST: Manipulacion de reporte",
+      "text": "Alterar informacion de seguridad vulnera el SIG y bloquea acciones preventivas efectivas.",
+      "retryNode": "c2_dilema_5",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "c2_retry_5C", "text": "Entendido", "nextNode": "c2_dilema_5", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+
+    {
+      "id": "c3_dilema_1",
       "nodeType": "dilemma",
       "pillar": "SIG",
       "mediaType": "image",
@@ -181,11 +744,11 @@
       "audioBgm": "/assets/audio/fail.mp3",
       "title": "Desviacion: Proceso Omitido",
       "text": "El mecanismo se atasco. La estandarizacion de procesos es nuestra firma de excelencia. Ignorar los procedimientos operativos estandar (SOP) compromete el resultado final.",
-      "retryNode": "escena_3_calidad",
+      "retryNode": "c3_dilema_1",
       "isFeedback": true,
       "isEnd": false,
       "choices": [
-        { "id": "retry_sig_1", "text": "Revisar Procedimiento (SOP)", "nextNode": "escena_3_calidad", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        { "id": "retry_sig_1", "text": "Revisar Procedimiento (SOP)", "nextNode": "c3_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
       ]
     },
     {
@@ -198,11 +761,11 @@
       "audioBgm": "/assets/audio/fail.mp3",
       "title": "Desviacion Grave: Registro Falso",
       "text": "Falsificar un reporte para ocultar un error es una violacion severa al Sistema Integrado de Gestion (SIG). La transparencia es vital para la mejora continua.",
-      "retryNode": "escena_3_calidad",
+      "retryNode": "c3_dilema_1",
       "isFeedback": true,
       "isEnd": false,
       "choices": [
-        { "id": "retry_sig_2", "text": "Entender la Importancia del SIG", "nextNode": "escena_3_calidad", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        { "id": "retry_sig_2", "text": "Entender la Importancia del SIG", "nextNode": "c3_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
       ]
     },
     {
@@ -215,11 +778,11 @@
       "audioBgm": "/assets/audio/fail.mp3",
       "title": "Desviacion: Material No Conforme",
       "text": "Introducir materiales no verificados en un proceso critico genera no conformidades. Cada pieza debe pasar por control de calidad antes de su uso.",
-      "retryNode": "escena_3_calidad",
+      "retryNode": "c3_dilema_1",
       "isFeedback": true,
       "isEnd": false,
       "choices": [
-        { "id": "retry_sig_3", "text": "Revisar Control de Calidad", "nextNode": "escena_3_calidad", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        { "id": "retry_sig_3", "text": "Revisar Control de Calidad", "nextNode": "c3_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
       ]
     },
     {

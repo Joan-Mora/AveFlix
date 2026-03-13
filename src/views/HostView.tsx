@@ -35,6 +35,7 @@ type StoryChoice = {
 
 type StoryNode = {
   id: string;
+  nodeType?: 'start' | 'dilemma' | 'feedback_fail' | 'end';
   title: string;
   text: string;
   mediaType: 'image' | 'video';
@@ -219,18 +220,24 @@ export const HostView = () => {
   }, [roomId, phase, remainingMs, gameState.endsAt]);
 
   const handleStart = async () => {
-    if (!roomId) return;
+    if (!roomId || players.length < 2) return;
+
+    const allNodes = (storyData.nodes ?? []) as StoryNode[];
+    const startNode = allNodes.find((node) => node.id === 'start');
+    const firstNodeId = startNode?.choices?.[0]?.nextNode ?? 'c1_dilema_1';
 
     const startedAt = Date.now();
     const endsAt = startedAt + 30_000;
 
     await update(ref(db, `rooms/${roomId}`), {
       'meta/phase': 'QUESTION',
-      'gameState/currentNodeId': 'escena_1_cultura',
+      'gameState/currentNodeId': firstNodeId,
       'gameState/startedAt': startedAt,
       'gameState/endsAt': endsAt,
+      responses: null,
     });
 
+    autoPhaseLockRef.current = false;
     setFeedbackQueue([]);
     setCurrentFeedbackIndex(0);
     setResponses({});
@@ -253,6 +260,31 @@ export const HostView = () => {
   const handleGoLeaderboard = async () => {
     if (!roomId) return;
     await update(ref(db, `rooms/${roomId}/meta`), { phase: 'LEADERBOARD' });
+  };
+
+  const handleAdvanceFromFeedback = async () => {
+    if (!roomId || !feedbackNode) return;
+
+    // Si el ultimo paso de la cola es un dilema, iniciamos la siguiente ronda.
+    if (feedbackNode.nodeType === 'dilemma') {
+      const startedAt = Date.now();
+      const endsAt = startedAt + 30_000;
+
+      await update(ref(db, `rooms/${roomId}`), {
+        'meta/phase': 'QUESTION',
+        'gameState/currentNodeId': feedbackNode.id,
+        'gameState/startedAt': startedAt,
+        'gameState/endsAt': endsAt,
+      });
+
+      autoPhaseLockRef.current = false;
+      setFeedbackQueue([]);
+      setCurrentFeedbackIndex(0);
+      setResponses({});
+      return;
+    }
+
+    await handleGoLeaderboard();
   };
 
   const choiceStats = useMemo(() => {
@@ -464,11 +496,11 @@ export const HostView = () => {
 
               {isLastFeedback ? (
                 <button
-                  onClick={handleGoLeaderboard}
+                  onClick={handleAdvanceFromFeedback}
                   className="px-8 py-4 rounded-full bg-avellano-red hover:bg-red-700 text-white text-lg font-black tracking-wide
                     transition-all duration-300 hover:scale-105 shadow-[0_0_24px_rgba(230,0,0,0.4)] cursor-pointer"
                 >
-                  Ver Ranking
+                  {feedbackNode.nodeType === 'dilemma' ? 'Siguiente Desafio' : 'Ver Ranking Final'}
                 </button>
               ) : (
                 <button
@@ -601,11 +633,19 @@ export const HostView = () => {
           </div>
         </div>
 
+        <div className="mt-3 text-sm text-gray-400">
+          {players.length < 2
+            ? 'Esperando al menos 2 exploradores para competir...'
+            : 'Equipo listo para iniciar la expedicion competitiva.'}
+        </div>
+
         <div className="mt-8 flex justify-end">
           <button
             onClick={handleStart}
+            disabled={players.length < 2}
             className="px-8 md:px-10 py-4 rounded-full bg-avellano-red hover:bg-red-700 text-white text-lg font-black tracking-wide
-              transition-all duration-300 hover:scale-105 shadow-[0_0_24px_rgba(230,0,0,0.4)] cursor-pointer"
+              transition-all duration-300 hover:scale-105 shadow-[0_0_24px_rgba(230,0,0,0.4)] cursor-pointer
+              disabled:opacity-50 disabled:hover:scale-100 disabled:hover:bg-avellano-red disabled:cursor-not-allowed"
           >
             Iniciar Expedicion
           </button>

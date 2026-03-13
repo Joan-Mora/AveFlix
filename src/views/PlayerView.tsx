@@ -77,7 +77,7 @@ export const PlayerView = () => {
   }, [gameState.currentNodeId]);
 
   useEffect(() => {
-    if (phase !== 'QUESTION') {
+    if (phase !== 'QUESTION' || !gameState.endsAt) {
       setRemainingMs(0);
       return;
     }
@@ -146,6 +146,19 @@ export const PlayerView = () => {
   }
 
   if (joined && phase === 'QUESTION' && currentQuestionNode) {
+    if (!gameState.currentNodeId || !gameState.startedAt || !gameState.endsAt) {
+      return (
+        <main className="min-h-screen bg-black text-white px-4 py-8 flex items-center justify-center">
+          <section className="w-full max-w-md rounded-3xl border border-avellano-red/30 bg-avellano-dark/85 backdrop-blur-xl p-8 text-center shadow-[0_0_35px_rgba(230,0,0,0.18)]">
+            <p className="text-xs uppercase tracking-[0.35em] text-avellano-red mb-4 font-bold">AveFlix Live · Player</p>
+            <div className="mx-auto mb-4 w-12 h-12 rounded-full border-4 border-avellano-red/30 border-t-avellano-red animate-spin" />
+            <h1 className="text-3xl font-black mb-3">Cargando desafio</h1>
+            <p className="text-gray-300 leading-relaxed">Esperando sincronizacion de la ronda...</p>
+          </section>
+        </main>
+      );
+    }
+
     const questionDurationMs = gameState.startedAt && gameState.endsAt
       ? Math.max(1, gameState.endsAt - gameState.startedAt)
       : 30_000;
@@ -194,6 +207,19 @@ export const PlayerView = () => {
               </button>
             ))}
           </div>
+        </section>
+      </main>
+    );
+  }
+
+  if (joined && phase === 'QUESTION' && !currentQuestionNode) {
+    return (
+      <main className="min-h-screen bg-black text-white px-4 py-8 flex items-center justify-center">
+        <section className="w-full max-w-md rounded-3xl border border-avellano-red/30 bg-avellano-dark/85 backdrop-blur-xl p-8 text-center shadow-[0_0_35px_rgba(230,0,0,0.18)]">
+          <p className="text-xs uppercase tracking-[0.35em] text-avellano-red mb-4 font-bold">AveFlix Live · Player</p>
+          <div className="mx-auto mb-4 w-12 h-12 rounded-full border-4 border-avellano-red/30 border-t-avellano-red animate-spin" />
+          <h1 className="text-3xl font-black mb-3">Cargando desafio</h1>
+          <p className="text-gray-300 leading-relaxed">Preparando pregunta y opciones...</p>
         </section>
       </main>
     );
