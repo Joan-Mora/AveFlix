@@ -12,4 +12,20 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return;
+
+          if (id.includes('firebase')) return 'vendor-firebase';
+          if (id.includes('react-qr-code')) return 'vendor-qrcode';
+          if (id.includes('react-dom')) return 'vendor-react-dom';
+          if (id.includes('react')) return 'vendor-react';
+
+          return 'vendor-misc';
+        },
+      },
+    },
+  },
 })
