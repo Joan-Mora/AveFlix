@@ -208,12 +208,15 @@ export const HostView = () => {
   }, [phase, gameState.endsAt]);
 
   useEffect(() => {
-    if (!roomId || phase !== 'QUESTION') return;
-    if (remainingMs > 0 || autoPhaseLockRef.current) return;
+    if (!roomId || phase !== 'QUESTION' || !gameState.endsAt) return;
+    if (autoPhaseLockRef.current) return;
 
-    autoPhaseLockRef.current = true;
-    update(ref(db, `rooms/${roomId}/meta`), { phase: 'VOTING_RESULTS' });
-  }, [roomId, phase, remainingMs]);
+    // Solo disparamos el final si el tiempo actual supero el tiempo de finalizacion absoluto
+    if (Date.now() >= gameState.endsAt) {
+      autoPhaseLockRef.current = true;
+      update(ref(db, `rooms/${roomId}/meta`), { phase: 'VOTING_RESULTS' });
+    }
+  }, [roomId, phase, remainingMs, gameState.endsAt]);
 
   const handleStart = async () => {
     if (!roomId) return;
