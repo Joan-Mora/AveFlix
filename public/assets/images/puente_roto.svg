@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0504"/>
+      <stop offset="50%" stop-color="#1f0805"/>
+      <stop offset="100%" stop-color="#120200"/>
+    </linearGradient>
+    <radialGradient id="fallGlow" cx="50%" cy="70%" r="50%">
+      <stop offset="0%" stop-color="#6a1000" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#6a1000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur3">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#fallGlow)"/>
+
+  <!-- Left cliff -->
+  <polygon points="0,350 520,350 480,430 440,480 400,520 350,550 250,560 100,555 0,550" fill="#200e04"/>
+  <rect x="0" y="550" width="520" height="530" fill="#180a02"/>
+
+  <!-- Right cliff - broken and crumbled -->
+  <polygon points="1920,350 1400,350 1420,420 1450,460 1460,480 1440,500 1420,520 1380,540 1300,550 1200,555 1100,550 1000,540 960,530" fill="#200e04"/>
+  <rect x="960" y="530" width="960" height="550" fill="#180a02"/>
+
+  <!-- Falling debris from right cliff -->
+  <rect x="1050" y="500" width="65" height="28" rx="4" fill="#1a0a02" transform="rotate(35, 1082, 514)"/>
+  <rect x="1100" y="460" width="45" height="20" rx="3" fill="#1a0a02" transform="rotate(-20, 1122, 470)"/>
+  <rect x="850" y="580" width="55" height="22" rx="3" fill="#180802" transform="rotate(15, 877, 591)"/>
+  <rect x="780" y="630" width="40" height="18" rx="3" fill="#160802" transform="rotate(-10, 800, 639)"/>
+  <rect x="900" y="680" width="50" height="20" rx="3" fill="#180802" transform="rotate(25, 925, 690)"/>
+
+  <!-- Scattered bridge rope fragments -->
+  <path d="M 500,420 L 580,460 L 650,420" fill="none" stroke="#4a2808" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 520,440 L 480,530 L 520,560" fill="none" stroke="#3a2006" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Dangling rope/plank from left cliff -->
+  <path d="M 488,420 Q 550,580 600,720" fill="none" stroke="#5a3010" stroke-width="9" stroke-linecap="round"/>
+  <path d="M 498,430 Q 560,590 610,730" fill="none" stroke="#5a3010" stroke-width="9" stroke-linecap="round"/>
+  <!-- Broken planks hanging -->
+  <rect x="542" y="560" width="55" height="16" rx="2" fill="#4a2810" transform="rotate(75, 569, 568)"/>
+  <rect x="562" y="620" width="55" height="16" rx="2" fill="#3a2008" transform="rotate(80, 589, 628)"/>
+
+  <!-- Anchor post on left still standing -->
+  <rect x="453" y="330" width="28" height="100" rx="4" fill="#3a1a08"/>
+  <!-- Right anchor post - fallen -->
+  <rect x="960" y="500" width="28" height="90" rx="4" fill="#2a1005" transform="rotate(55, 974, 545)"/>
+
+  <!-- Rescue rope thrown from left cliff to right - thin, still attached -->
+  <path d="M 480,430 Q 700,640 960,580" fill="none" stroke="#6a5030" stroke-width="5" stroke-dasharray="15,8" opacity="0.7"/>
+
+  <!-- Explorer on left cliff, trying to help -->
+  <!-- Hat -->
+  <rect x="318" y="428" width="54" height="44" rx="5" fill="#1a0e04"/>
+  <ellipse cx="345" cy="474" rx="65" ry="13" fill="#110a02"/>
+  <!-- Head -->
+  <circle cx="345" cy="505" r="40" fill="#1a0e04"/>
+  <!-- Beak -->
+  <ellipse cx="378" cy="511" rx="20" ry="10" fill="#201408"/>
+  <!-- Body, leaning forward urgently -->
+  <ellipse cx="345" cy="578" rx="48" ry="58" fill="#1a0e04" transform="rotate(-12, 345, 578)"/>
+  <!-- Both arms extended reaching out -->
+  <line x1="385" y1="558" x2="458" y2="540" stroke="#110a02" stroke-width="10" stroke-linecap="round"/>
+  <line x1="305" y1="558" x2="270" y2="610" stroke="#110a02" stroke-width="9" stroke-linecap="round"/>
+  <!-- Legs, braced -->
+  <line x1="327" y1="630" x2="308" y2="690" stroke="#1a0e04" stroke-width="14" stroke-linecap="round"/>
+  <line x1="363" y1="630" x2="382" y2="688" stroke="#1a0e04" stroke-width="14" stroke-linecap="round"/>
+  <ellipse cx="306" cy="695" rx="20" ry="10" fill="#110a02"/>
+  <ellipse cx="384" cy="693" rx="20" ry="10" fill="#110a02"/>
+
+  <!-- Second explorer falling into abyss (seen from behind, mid-air) -->
+  <!-- Small figure in the void, falling -->
+  <circle cx="750" cy="740" r="22" fill="#12090200" opacity="0.9"/>
+  <ellipse cx="750" cy="785" rx="27" ry="32" fill="#160c02" opacity="0.9"/>
+  <rect x="732" y="718" width="36" height="30" rx="3" fill="#0e0801" opacity="0.9"/>
+  <!-- Arms spread in panic -->
+  <line x1="777" y1="770" x2="818" y2="750" stroke="#110802" stroke-width="8" opacity="0.9" stroke-linecap="round"/>
+  <line x1="723" y1="770" x2="682" y2="750" stroke="#110802" stroke-width="8" opacity="0.9" stroke-linecap="round"/>
+  <!-- Helmet falling off -->
+  <ellipse cx="760" cy="710" rx="20" ry="12" fill="#1a1004" opacity="0.8"/>
+
+  <!-- Hard hat falling separately -->
+  <ellipse cx="830" cy="780" rx="22" ry="14" fill="#ffaa00" opacity="0.7" transform="rotate(30, 830, 780)"/>
+
+  <!-- The VOID glow at bottom -->
+  <ellipse cx="800" cy="1000" rx="300" ry="100" fill="#3a0800" opacity="0.4"/>
+
+  <!-- Scene title -->
+  <text x="960" y="100" text-anchor="middle"
+    font-family="Arial Black, sans-serif"
+    font-size="72" font-weight="900"
+    fill="#ff3300" opacity="0.95" letter-spacing="2" filter="url(#glow)">PUENTE ROTO</text>
+  <rect x="460" y="112" width="1000" height="6" fill="#e60000" rx="3"/>
+  <text x="960" y="185" text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="28" fill="#cc3300" letter-spacing="2">El equipo no verificó el equipamiento de seguridad.</text>
+
+  <!-- SST badge -->
+  <rect x="760" y="950" width="400" height="50" rx="25" fill="#6a0a00" opacity="0.9"/>
+  <text x="960" y="984" text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="20" font-weight="700" fill="#ffaaaa" letter-spacing="4">SST — CONSECUENCIAS</text>
+</svg>

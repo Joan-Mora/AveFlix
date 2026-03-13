@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f0205"/>
+      <stop offset="40%" stop-color="#200309"/>
+      <stop offset="100%" stop-color="#0a0005"/>
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="45%" r="35%">
+      <stop offset="0%" stop-color="#6a0010" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#6a0010" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="groundGlow" cx="50%" cy="80%" r="30%">
+      <stop offset="0%" stop-color="#400008" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#400008" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#centerGlow)"/>
+  <rect width="1920" height="1080" fill="url(#groundGlow)"/>
+
+  <!-- Heavy jungle - very dark, closing in -->
+  <!-- Left wall of trees, very dense -->
+  <rect x="0" y="0" width="500" height="1080" fill="#080d04" opacity="0.9"/>
+  <rect x="0" y="0" width="380" height="1080" fill="#060b03" opacity="0.9"/>
+  <ellipse cx="200" cy="300" rx="300" ry="280" fill="#050a03"/>
+  <ellipse cx="100" cy="600" rx="220" ry="250" fill="#040903"/>
+  <ellipse cx="350" cy="200" rx="260" ry="240" fill="#060b04"/>
+
+  <!-- Right wall of trees -->
+  <rect x="1420" y="0" width="500" height="1080" fill="#080d04" opacity="0.9"/>
+  <rect x="1540" y="0" width="380" height="1080" fill="#060b03" opacity="0.9"/>
+  <ellipse cx="1720" cy="300" rx="300" ry="280" fill="#050a03"/>
+  <ellipse cx="1820" cy="600" rx="220" ry="250" fill="#040903"/>
+  <ellipse cx="1570" cy="200" rx="260" ry="240" fill="#060b04"/>
+
+  <!-- Top foliage closing in -->
+  <ellipse cx="960" cy="-50" rx="700" ry="250" fill="#040902" opacity="0.8"/>
+
+  <!-- Ground -->
+  <rect x="0" y="780" width="1920" height="300" fill="#080a03"/>
+
+  <!-- Narrow path - getting very narrow, claustrophobic -->
+  <polygon points="840,780 1080,780 820,1080 1100,1080" fill="#0e1508"/>
+
+  <!-- Creeping vines / dead vegetation overlay -->
+  <line x1="480" y1="0" x2="400" y2="400" stroke="#060d04" stroke-width="20" stroke-linecap="round"/>
+  <line x1="400" y1="0" x2="350" y2="350" stroke="#050b03" stroke-width="15" stroke-linecap="round"/>
+  <line x1="1440" y1="0" x2="1520" y2="400" stroke="#060d04" stroke-width="20" stroke-linecap="round"/>
+  <line x1="1520" y1="0" x2="1570" y2="350" stroke="#050b03" stroke-width="15" stroke-linecap="round"/>
+
+  <!-- Lone explorer in center, hunched -->
+  <!-- Hat (drooping, sad) -->
+  <rect x="928" y="560" width="64" height="48" rx="5" fill="#150c03"/>
+  <ellipse cx="960" cy="610" rx="78" ry="14" fill="#100803" transform="rotate(5, 960, 608)"/>
+  <!-- Head, lowered -->
+  <circle cx="960" cy="645" r="42" fill="#150c03"/>
+  <!-- Beak -->
+  <ellipse cx="994" cy="652" rx="20" ry="10" fill="#1e1206"/>
+  <!-- Body, hunched forward -->
+  <ellipse cx="960" cy="720" rx="50" ry="60" fill="#130b03" transform="rotate(10, 960, 720)"/>
+  <!-- Arm on knee, exhausted pose -->
+  <line x1="1000" y1="700" x2="1040" y2="760" stroke="#100803" stroke-width="10" stroke-linecap="round"/>
+  <line x1="920" y1="700" x2="880" y2="750" stroke="#100803" stroke-width="9" stroke-linecap="round"/>
+  <!-- Legs, sitting on ground -->
+  <line x1="940" y1="775" x2="900" y2="840" stroke="#150c03" stroke-width="15" stroke-linecap="round"/>
+  <line x1="980" y1="775" x2="1020" y2="840" stroke="#150c03" stroke-width="15" stroke-linecap="round"/>
+  <ellipse cx="898" cy="845" rx="22" ry="11" fill="#100803"/>
+  <ellipse cx="1022" cy="845" rx="22" ry="11" fill="#100803"/>
+
+  <!-- Ground shadow under explorer -->
+  <ellipse cx="960" cy="845" rx="90" ry="18" fill="#200003" opacity="0.4"/>
+
+  <!-- Broken map on ground -->
+  <rect x="870" y="838" width="90" height="65" rx="4" fill="#b89040" opacity="0.7" transform="rotate(-25, 915, 870)"/>
+  <line x1="880" y1="845" x2="950" y2="890" stroke="#5a3010" stroke-width="2" opacity="0.7" transform="rotate(-25, 915, 870)"/>
+
+  <!-- Warning sign - glowing red -->
+  <!-- Triangle warning -->
+  <polygon points="960,280 1100,520 820,520" fill="none" stroke="#e60000" stroke-width="8" opacity="0.85" filter="url(#glow)"/>
+  <text x="960" y="490" text-anchor="middle"
+    font-family="Arial Black, sans-serif"
+    font-size="110" fill="#e60000" opacity="0.9" filter="url(#glow)">!</text>
+
+  <!-- Exclamation glow -->
+  <polygon points="960,280 1100,520 820,520" fill="#e60000" opacity="0.04"/>
+
+  <!-- Eerie red eye shapes in the darkness - predators watching -->
+  <ellipse cx="280" cy="450" rx="9" ry="6" fill="#e60000" opacity="0.7"/>
+  <ellipse cx="308" cy="450" rx="9" ry="6" fill="#e60000" opacity="0.7"/>
+  <ellipse cx="1612" cy="380" rx="8" ry="5" fill="#e60000" opacity="0.6"/>
+  <ellipse cx="1638" cy="380" rx="8" ry="5" fill="#e60000" opacity="0.6"/>
+  <ellipse cx="180" cy="650" rx="7" ry="5" fill="#e60000" opacity="0.5"/>
+  <ellipse cx="202" cy="650" rx="7" ry="5" fill="#e60000" opacity="0.5"/>
+
+  <!-- Scene title -->
+  <text x="960" y="130" text-anchor="middle"
+    font-family="Arial Black, sans-serif"
+    font-size="70" font-weight="900"
+    fill="#ff4444" opacity="0.95" letter-spacing="2">AISLAMIENTO</text>
+  <rect x="560" y="142" width="800" height="6" fill="#e60000" rx="3"/>
+
+  <!-- Subtitle -->
+  <text x="960" y="210" text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="30" fill="#c06060" letter-spacing="2">Solo en la jungla... el equipo quedó atrás.</text>
+
+  <!-- Feedback badge -->
+  <rect x="760" y="950" width="400" height="50" rx="25" fill="#6a0010" opacity="0.9"/>
+  <text x="960" y="984" text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="20" font-weight="700" fill="#ffaaaa" letter-spacing="3">PILLAR: CULTURA</text>
+</svg>

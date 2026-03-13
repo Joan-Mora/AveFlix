@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050a00"/>
+      <stop offset="40%" stop-color="#101a00"/>
+      <stop offset="100%" stop-color="#180e00"/>
+    </linearGradient>
+    <radialGradient id="goldGlow" cx="50%" cy="60%" r="45%">
+      <stop offset="0%" stop-color="#cc8800" stop-opacity="0.7"/>
+      <stop offset="60%" stop-color="#884400" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#442200" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="chestGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffcc00" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ffaa00" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#goldGlow)"/>
+
+  <!-- Jungle/cave background walls -->
+  <rect x="0" y="0" width="280" height="1080" fill="#030800" opacity="0.9"/>
+  <rect x="1640" y="0" width="280" height="1080" fill="#030800" opacity="0.9"/>
+
+  <!-- Jungle foliage at top, lush (explorer reached the treasure) -->
+  <ellipse cx="960" cy="-80" rx="1000" ry="360" fill="#030e03" opacity="0.8"/>
+  <ellipse cx="400" cy="80" rx="350" ry="220" fill="#041205" opacity="0.7"/>
+  <ellipse cx="1520" cy="80" rx="350" ry="220" fill="#041205" opacity="0.7"/>
+
+  <!-- Rays of golden light from above -->
+  <polygon points="820,0 1000,0 1100,400 880,400" fill="#cc8800" opacity="0.07"/>
+  <polygon points="880,0 1040,0 1040,500 880,500" fill="#ffaa00" opacity="0.09"/>
+  <polygon points="920,0 1000,0 960,600 920,600" fill="#ffcc00" opacity="0.12"/>
+  <polygon points="880,0 980,0 930,700 880,700" fill="#ffaa00" opacity="0.06"/>
+
+  <!-- Ground / stone floor -->
+  <rect x="0" y="820" width="1920" height="260" fill="#0a0800"/>
+
+  <!-- Stone platform under chest -->
+  <ellipse cx="960" cy="840" rx="280" ry="40" fill="#1a1200"/>
+  <rect x="680" y="800" width="560" height="60" rx="8" fill="#1a1200"/>
+  <!-- Platform engraving -->
+  <text x="960" y="838" text-anchor="middle"
+    font-family="serif"
+    font-size="20" fill="#553300" opacity="0.8" letter-spacing="8">✦ ◈ ✦ ◈ ✦</text>
+
+  <!-- Treasure Chest shadow glow on ground -->
+  <ellipse cx="960" cy="800" rx="220" ry="60" fill="#ffaa00" opacity="0.15" filter="url(#glow)"/>
+
+  <!-- TREASURE CHEST -->
+  <!-- Chest body (main block) -->
+  <rect x="770" y="610" width="380" height="230" rx="10" fill="#7a4005" stroke="#cc7700" stroke-width="5"/>
+  <!-- Chest lid (curved) -->
+  <rect x="770" y="560" width="380" height="100" rx="15" fill="#8a4808" stroke="#dd8800" stroke-width="5"/>
+  <!-- Lid curve highlight -->
+  <ellipse cx="960" cy="562" rx="190" ry="40" fill="#aa6010" opacity="0.8"/>
+  <!-- Dark lid to body edge -->
+  <rect x="770" y="640" width="380" height="20" rx="0" fill="#4a2400"/>
+
+  <!-- Chest metal bands horizontal -->
+  <rect x="765" y="620" width="390" height="18" rx="5" fill="#4a3000" stroke="#aa7700" stroke-width="3"/>
+  <rect x="765" y="690" width="390" height="18" rx="5" fill="#4a3000" stroke="#aa7700" stroke-width="3"/>
+  <rect x="765" y="760" width="390" height="18" rx="5" fill="#4a3000" stroke="#aa7700" stroke-width="3"/>
+
+  <!-- Chest metal bands vertical -->
+  <rect x="850" y="560" width="18" height="280" rx="5" fill="#4a3000" stroke="#aa7700" stroke-width="2"/>
+  <rect x="1052" y="560" width="18" height="280" rx="5" fill="#4a3000" stroke="#aa7700" stroke-width="2"/>
+
+  <!-- Chest lock plate -->
+  <rect x="930" y="600" width="60" height="55" rx="8" fill="#cc9900" stroke="#ffdd00" stroke-width="4"/>
+  <!-- Lock keyhole -->
+  <circle cx="960" cy="618" r="11" fill="#3a2000" stroke="#aa7700" stroke-width="2"/>
+  <rect x="952" y="626" width="16" height="16" rx="2" fill="#3a2000"/>
+
+  <!-- Rivets on chest corners -->
+  <circle cx="785" cy="625" r="8" fill="#cc8800"/>
+  <circle cx="1135" cy="625" r="8" fill="#cc8800"/>
+  <circle cx="785" cy="835" r="8" fill="#cc8800"/>
+  <circle cx="1135" cy="835" r="8" fill="#cc8800"/>
+
+  <!-- Chest open state - glowing light from inside (lid open at angle) -->
+  <rect x="770" y="560" width="380" height="55" rx="15" fill="#8a4808" stroke="#dd8800" stroke-width="5" transform="rotate(-15, 960, 560)"/>
+  <!-- Inner treasure glow -->
+  <ellipse cx="960" cy="610" rx="170" ry="30" fill="#ffcc00" opacity="0.6" filter="url(#glow)"/>
+  <ellipse cx="960" cy="610" rx="120" ry="20" fill="#ffee00" opacity="0.5" filter="url(#glow)"/>
+
+  <!-- Gold coins scattered -->
+  <ellipse cx="820" cy="795" rx="18" ry="10" fill="#ffcc00" opacity="0.9" transform="rotate(15, 820, 795)"/>
+  <ellipse cx="860" cy="810" rx="18" ry="10" fill="#ffaa00" opacity="0.85" transform="rotate(-10, 860, 810)"/>
+  <ellipse cx="1060" cy="785" rx="16" ry="9" fill="#ffcc00" opacity="0.9" transform="rotate(20, 1060, 785)"/>
+  <ellipse cx="1100" cy="808" rx="18" ry="10" fill="#ffdd00" opacity="0.86" transform="rotate(-5, 1100, 808)"/>
+  <ellipse cx="920" cy="808" rx="14" ry="8" fill="#ffbb00" opacity="0.8"/>
+  <ellipse cx="1000" cy="812" rx="16" ry="9" fill="#ffcc00" opacity="0.88"/>
+
+  <!-- Gems / jewels scattered -->
+  <polygon points="760,760 775,740 790,760 775,780" fill="#e60000" opacity="0.9"/>
+  <polygon points="1125,745 1138,728 1151,745 1138,762" fill="#4488ff" opacity="0.9"/>
+  <polygon points="800,835 812,820 824,835 812,850" fill="#00cc66" opacity="0.9"/>
+  <polygon points="1095,840 1106,826 1117,840 1106,854" fill="#9944ff" opacity="0.9"/>
+
+  <!-- Light rays from open chest -->
+  <line x1="960" y1="600" x2="780" y2="400" stroke="#ffcc00" stroke-width="3" opacity="0.15"/>
+  <line x1="960" y1="600" x2="1140" y2="400" stroke="#ffcc00" stroke-width="3" opacity="0.15"/>
+  <line x1="960" y1="600" x2="960" y2="350" stroke="#ffcc00" stroke-width="4" opacity="0.2"/>
+  <line x1="960" y1="600" x2="700" y2="450" stroke="#ffcc00" stroke-width="2" opacity="0.1"/>
+  <line x1="960" y1="600" x2="1220" y2="450" stroke="#ffcc00" stroke-width="2" opacity="0.1"/>
+
+  <!-- Explorer cheering (both arms raised!) -->
+  <!-- Hat (knocked back in celebration) -->
+  <ellipse cx="432" cy="615" rx="68" ry="14" fill="#110a02"/>
+  <rect x="404" y="575" width="56" height="44" rx="5" fill="#1a0e04" transform="rotate(-20, 432, 597)"/>
+  <!-- Head -->
+  <circle cx="445" cy="660" r="42" fill="#1a0e04"/>
+  <!-- Big smile beak -->
+  <path d="M 460,672 Q 490,695 478,680" fill="#201408" stroke="#201408" stroke-width="2"/>
+  <!-- Body -->
+  <ellipse cx="445" cy="740" rx="50" ry="60" fill="#1a0e04"/>
+  <!-- Both arms RAISED in victory -->
+  <line x1="485" y1="715" x2="548" y2="658" stroke="#110a02" stroke-width="11" stroke-linecap="round"/>
+  <line x1="405" y1="715" x2="342" y2="658" stroke="#110a02" stroke-width="11" stroke-linecap="round"/>
+  <!-- Hands (fists pumping) -->
+  <circle cx="556" cy="652" r="16" fill="#110a02"/>
+  <circle cx="334" cy="652" r="16" fill="#110a02"/>
+  <!-- Legs, jumping slightly -->
+  <line x1="425" y1="796" x2="408" y2="848" stroke="#1a0e04" stroke-width="14" stroke-linecap="round"/>
+  <line x1="465" y1="796" x2="482" y2="845" stroke="#1a0e04" stroke-width="14" stroke-linecap="round"/>
+  <ellipse cx="406" cy="852" rx="22" ry="11" fill="#110a02"/>
+  <ellipse cx="484" cy="849" rx="22" ry="11" fill="#110a02"/>
+
+  <!-- Second explorer approaching (right side) -->
+  <!-- Hat -->
+  <rect x="1388" y="622" width="50" height="40" rx="5" fill="#141a06"/>
+  <ellipse cx="1413" cy="664" rx="60" ry="12" fill="#0e1204"/>
+  <!-- Head -->
+  <circle cx="1413" cy="694" r="38" fill="#141a06"/>
+  <!-- Body -->
+  <ellipse cx="1413" cy="762" rx="44" ry="53" fill="#141a06"/>
+  <!-- Pointing at chest excitedly -->
+  <line x1="1450" y1="740" x2="1200" y2="720" stroke="#0e1204" stroke-width="10" stroke-linecap="round"/>
+  <line x1="1376" y1="740" x2="1350" y2="788" stroke="#0e1204" stroke-width="9" stroke-linecap="round"/>
+  <!-- Legs -->
+  <line x1="1395" y1="812" x2="1378" y2="864" stroke="#141a06" stroke-width="13" stroke-linecap="round"/>
+  <line x1="1431" y1="812" x2="1448" y2="862" stroke="#141a06" stroke-width="13" stroke-linecap="round"/>
+  <ellipse cx="1376" cy="868" rx="20" ry="10" fill="#0e1204"/>
+  <ellipse cx="1450" cy="866" rx="20" ry="10" fill="#0e1204"/>
+
+  <!-- Floating stars / celebration -->
+  <text x="560" y="520" font-family="Arial" font-size="50" fill="#ffcc00" opacity="0.8" filter="url(#softGlow)">★</text>
+  <text x="640" y="440" font-family="Arial" font-size="35" fill="#ffdd00" opacity="0.7" filter="url(#softGlow)">★</text>
+  <text x="1310" y="510" font-family="Arial" font-size="50" fill="#ffcc00" opacity="0.8" filter="url(#softGlow)">★</text>
+  <text x="1230" y="440" font-family="Arial" font-size="35" fill="#ffdd00" opacity="0.7" filter="url(#softGlow)">★</text>
+  <text x="960" y="390" font-family="Arial" font-size="40" fill="#ffee00" opacity="0.6" filter="url(#softGlow)">★</text>
+
+  <!-- Scene title -->
+  <text x="960" y="110" text-anchor="middle"
+    font-family="Arial Black, sans-serif"
+    font-size="80" font-weight="900"
+    fill="#ffcc00" opacity="0.98" letter-spacing="2" filter="url(#softGlow)">¡TESORO ENCONTRADO!</text>
+  <rect x="360" y="122" width="1200" height="8" fill="#ffaa00" rx="4"/>
+  <text x="960" y="195" text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="30" fill="#ddaa44" letter-spacing="4">El equipo completó la expedición con éxito</text>
+
+  <!-- Victory badge -->
+  <rect x="710" y="950" width="500" height="56" rx="28" fill="#cc8800" opacity="0.95"/>
+  <text x="960" y="988" text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="22" font-weight="700" fill="white" letter-spacing="5">CAPACITACIÓN AVELLANO 2026</text>
+</svg>

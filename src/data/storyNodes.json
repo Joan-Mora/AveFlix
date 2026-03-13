@@ -1,0 +1,239 @@
+{
+  "nodes": [
+    {
+      "id": "start",
+      "nodeType": "start",
+      "pillar": "none",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/portada.svg",
+      "audioBgm": "/assets/audio/intro.mp3",
+      "title": "AveFlix: Temporada 1",
+      "text": "El Origen: En busca del Tesoro. Bienvenido, explorador. La verdadera prueba comienza ahora. Esta listo para demostrar su valia en Avellano?",
+      "isFeedback": false,
+      "isEnd": false,
+      "choices": [
+        { "id": "start_btn", "text": "Comenzar Expedicion", "nextNode": "escena_1_cultura", "points": 0, "pillarPoints": {}, "isCorrect": true, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "escena_1_cultura",
+      "nodeType": "dilemma",
+      "pillar": "Cultura",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_dilema.svg",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Dilema de Cultura",
+      "text": "Llegas a una bifurcacion. Un companero de tu escuadron ha dejado caer su mapa y parece desorientado. Tu reloj marca que el tiempo se agota. Que decides hacer?",
+      "isFeedback": false,
+      "isEnd": false,
+      "choices": [
+        { "id": "cultura_fail_aislamiento", "text": "Avanzar solo para asegurar que al menos uno llegue a tiempo.", "nextNode": "fail_cultura_aislamiento", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "aislamiento", "sfx": "/assets/audio/error.mp3" },
+        { "id": "cultura_fail_conflicto", "text": "Gritarle que se apure y criticar su falta de preparacion.", "nextNode": "fail_cultura_conflicto", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "conflicto_valores", "sfx": "/assets/audio/error.mp3" },
+        { "id": "cultura_correct", "text": "Detenerte, compartir tu mapa y trazar una ruta juntos.", "nextNode": "escena_2_sst", "points": 10, "pillarPoints": { "Cultura": 10 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
+        { "id": "cultura_fail_deshonestidad", "text": "Tomar un atajo prohibido en el mapa para compensar el tiempo.", "nextNode": "fail_cultura_deshonestidad", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "deshonestidad", "sfx": "/assets/audio/error.mp3" }
+      ]
+    },
+    {
+      "id": "fail_cultura_aislamiento",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "aislamiento",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Error Critico: Aislamiento",
+      "text": "En Avellano, el exito individual no existe si el equipo fracasa. Dejar a un companero atras debilita toda la operacion.",
+      "retryNode": "escena_1_cultura",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "retry_cultura_1", "text": "Reevaluar la situacion", "nextNode": "escena_1_cultura", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "fail_cultura_conflicto",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "conflicto_valores",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Error Critico: Conflicto de Valores",
+      "text": "El respeto es fundamental. Fomentar un ambiente hostil destruye la moral del equipo y va en contra del ADN corporativo de Avellano.",
+      "retryNode": "escena_1_cultura",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "retry_cultura_2", "text": "Reevaluar la situacion", "nextNode": "escena_1_cultura", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "fail_cultura_deshonestidad",
+      "nodeType": "feedback_fail",
+      "pillar": "Cultura",
+      "failType": "deshonestidad",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/cultura_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Error Critico: Deshonestidad",
+      "text": "La integridad no se negocia. Tomar atajos prohibidos compromete la calidad y la seguridad de toda la mision.",
+      "retryNode": "escena_1_cultura",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "retry_cultura_3", "text": "Reevaluar la situacion", "nextNode": "escena_1_cultura", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "escena_2_sst",
+      "nodeType": "dilemma",
+      "pillar": "SST",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_inestable.svg",
+      "audioBgm": "/assets/audio/suspenso.mp3",
+      "title": "Dilema de SST",
+      "text": "Encuentran un puente colgante sobre un abismo. Es la unica ruta, pero no tiene linea de vida instalada y el viento es fuerte. Como procedes?",
+      "isFeedback": false,
+      "isEnd": false,
+      "choices": [
+        { "id": "sst_fail_caida", "text": "Cruzar con cuidado confiando en el equilibrio.", "nextNode": "fail_sst_caida", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "caida_altura", "sfx": "/assets/audio/error.mp3" },
+        { "id": "sst_fail_electrico", "text": "Agarrarse de un cable de alta tension expuesto para no caer.", "nextNode": "fail_sst_electrico", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "quemadura_electrica", "sfx": "/assets/audio/error.mp3" },
+        { "id": "sst_fail_asfixia", "text": "Usar mascaras antigas pesadas que bloquean la vision para cruzar.", "nextNode": "fail_sst_asfixia", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "asfixia", "sfx": "/assets/audio/error.mp3" },
+        { "id": "sst_correct", "text": "Reportar el riesgo e instalar un arnes a un punto de anclaje seguro.", "nextNode": "escena_3_calidad", "points": 10, "pillarPoints": { "SST": 10 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" }
+      ]
+    },
+    {
+      "id": "fail_sst_caida",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "caida_altura",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Incidente: Riesgo de Caida",
+      "text": "Nunca asumas que tu equilibrio es suficiente. El trabajo en alturas sin arnes y linea de vida es una violacion directa a los protocolos de Avellano.",
+      "retryNode": "escena_2_sst",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "retry_sst_1", "text": "Revisar Protocolos de Altura", "nextNode": "escena_2_sst", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "fail_sst_electrico",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "quemadura_electrica",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Incidente: Riesgo Electrico",
+      "text": "Ignorar la naturaleza de los materiales circundantes es letal. Tocar cables sin equipo dielectrico o desenergizacion previa causa quemaduras graves o electrocucion.",
+      "retryNode": "escena_2_sst",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "retry_sst_2", "text": "Revisar Protocolos Electricos", "nextNode": "escena_2_sst", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "fail_sst_asfixia",
+      "nodeType": "feedback_fail",
+      "pillar": "SST",
+      "failType": "asfixia",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/puente_roto.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Incidente: Uso Incorrecto de EPP",
+      "text": "Usar el Equipo de Proteccion Personal incorrecto crea nuevos riesgos como perdida de vision y fatiga extrema.",
+      "retryNode": "escena_2_sst",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "retry_sst_3", "text": "Revisar Uso de EPP", "nextNode": "escena_2_sst", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "escena_3_calidad",
+      "nodeType": "dilemma",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/calidad_dilema.svg",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Dilema de Calidad",
+      "text": "Frente a la puerta del tesoro hay un mecanismo antiguo desarmado. Hay un pergamino con instrucciones detalladas, pero tu crees saber como encajan las piezas a simple vista.",
+      "isFeedback": false,
+      "isEnd": false,
+      "choices": [
+        { "id": "sig_fail_proceso", "text": "Armarlo a prueba y error ignorando el pergamino para ahorrar tiempo.", "nextNode": "fail_sig_proceso", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "proceso_saltado", "sfx": "/assets/audio/error.mp3" },
+        { "id": "sig_fail_falso", "text": "Forzar una pieza que no encaja y documentar que el mecanismo estaba roto.", "nextNode": "fail_sig_falso", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "registro_falso", "sfx": "/assets/audio/error.mp3" },
+        { "id": "sig_correct", "text": "Seguir el pergamino paso a paso, verificando cada engranaje antes de avanzar.", "nextNode": "end_success", "points": 10, "pillarPoints": { "SIG": 10 }, "isCorrect": true, "sfx": "/assets/audio/triumph.mp3" },
+        { "id": "sig_fail_noconf", "text": "Usar piezas sobrantes de tu inventario para reemplazar las que parecen desgastadas.", "nextNode": "fail_sig_noconf", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "no_conformidad", "sfx": "/assets/audio/error.mp3" }
+      ]
+    },
+    {
+      "id": "fail_sig_proceso",
+      "nodeType": "feedback_fail",
+      "pillar": "SIG",
+      "failType": "proceso_saltado",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/calidad_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Proceso Omitido",
+      "text": "El mecanismo se atasco. La estandarizacion de procesos es nuestra firma de excelencia. Ignorar los procedimientos operativos estandar (SOP) compromete el resultado final.",
+      "retryNode": "escena_3_calidad",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "retry_sig_1", "text": "Revisar Procedimiento (SOP)", "nextNode": "escena_3_calidad", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "fail_sig_falso",
+      "nodeType": "feedback_fail",
+      "pillar": "SIG",
+      "failType": "registro_falso",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/calidad_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion Grave: Registro Falso",
+      "text": "Falsificar un reporte para ocultar un error es una violacion severa al Sistema Integrado de Gestion (SIG). La transparencia es vital para la mejora continua.",
+      "retryNode": "escena_3_calidad",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "retry_sig_2", "text": "Entender la Importancia del SIG", "nextNode": "escena_3_calidad", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "fail_sig_noconf",
+      "nodeType": "feedback_fail",
+      "pillar": "SIG",
+      "failType": "no_conformidad",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/calidad_error.svg",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviacion: Material No Conforme",
+      "text": "Introducir materiales no verificados en un proceso critico genera no conformidades. Cada pieza debe pasar por control de calidad antes de su uso.",
+      "retryNode": "escena_3_calidad",
+      "isFeedback": true,
+      "isEnd": false,
+      "choices": [
+        { "id": "retry_sig_3", "text": "Revisar Control de Calidad", "nextNode": "escena_3_calidad", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+      ]
+    },
+    {
+      "id": "end_success",
+      "nodeType": "end",
+      "pillar": "none",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/tesoro_encontrado.svg",
+      "audioBgm": "/assets/audio/victoria.mp3",
+      "title": "Expedicion Completada",
+      "text": "Has demostrado tu capacidad para tomar decisiones seguras y eticas en cada pilar de Avellano.",
+      "isFeedback": false,
+      "isEnd": true,
+      "choices": []
+    }
+  ]
+}

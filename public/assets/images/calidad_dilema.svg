@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#030e08"/>
+      <stop offset="50%" stop-color="#061a0e"/>
+      <stop offset="100%" stop-color="#041208"/>
+    </linearGradient>
+    <radialGradient id="doorGlow" cx="50%" cy="55%" r="30%">
+      <stop offset="0%" stop-color="#00a050" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#00a050" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glyphGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="Stone">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3"/>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#doorGlow)"/>
+
+  <!-- Cave walls -->
+  <rect x="0" y="0" width="340" height="1080" fill="#04100a" opacity="0.95"/>
+  <rect x="1580" y="0" width="340" height="1080" fill="#04100a" opacity="0.95"/>
+  <!-- Ceiling rock -->
+  <ellipse cx="960" cy="-60" rx="900" ry="360" fill="#030e07" opacity="0.9"/>
+  <!-- Floor -->
+  <rect x="0" y="880" width="1920" height="200" fill="#030e07"/>
+
+  <!-- Cave details - rock texture shapes -->
+  <ellipse cx="200" cy="300" rx="180" ry="140" fill="#050f09" opacity="0.8"/>
+  <ellipse cx="150" cy="600" rx="160" ry="180" fill="#04100a" opacity="0.7"/>
+  <ellipse cx="1720" cy="350" rx="180" ry="140" fill="#050f09" opacity="0.8"/>
+  <ellipse cx="1770" cy="650" rx="160" ry="180" fill="#04100a" opacity="0.7"/>
+
+  <!-- Wall torches with green flame (alchemical feel) -->
+  <!-- Left torch -->
+  <rect x="400" y="460" width="20" height="80" rx="4" fill="#3a2808"/>
+  <ellipse cx="410" cy="445" rx="28" ry="40" fill="#002a10" opacity="0.8"/>
+  <ellipse cx="410" cy="430" rx="18" ry="28" fill="#005a20" opacity="0.9"/>
+  <ellipse cx="410" cy="418" rx="10" ry="18" fill="#00a050" opacity="0.9"/>
+  <!-- Torch light -->
+  <ellipse cx="410" cy="450" rx="80" ry="60" fill="#00a050" opacity="0.08"/>
+
+  <!-- Right torch -->
+  <rect x="1500" y="460" width="20" height="80" rx="4" fill="#3a2808"/>
+  <ellipse cx="1510" cy="445" rx="28" ry="40" fill="#002a10" opacity="0.8"/>
+  <ellipse cx="1510" cy="430" rx="18" ry="28" fill="#005a20" opacity="0.9"/>
+  <ellipse cx="1510" cy="418" rx="10" ry="18" fill="#00a050" opacity="0.9"/>
+  <ellipse cx="1510" cy="450" rx="80" ry="60" fill="#00a050" opacity="0.08"/>
+
+  <!-- The Ancient Stone Door (center - massive) -->
+  <!-- Door frame -->
+  <rect x="620" y="220" width="680" height="700" rx="30" fill="#0a1a0e" stroke="#1a4a28" stroke-width="8"/>
+  <!-- Door frame decorative border -->
+  <rect x="630" y="230" width="660" height="680" rx="25" fill="none" stroke="#0a3a18" stroke-width="4"/>
+
+  <!-- Door left panel -->
+  <rect x="630" y="230" width="325" height="680" rx="20" fill="#0d2015"/>
+  <rect x="630" y="230" width="325" height="680" rx="20" fill="none" stroke="#1a4a28" stroke-width="3"/>
+
+  <!-- Door right panel -->
+  <rect x="965" y="230" width="325" height="680" rx="20" fill="#0c1e14"/>
+  <rect x="965" y="230" width="325" height="680" rx="20" fill="none" stroke="#1a4a28" stroke-width="3"/>
+
+  <!-- Center seam with glowing crack -->
+  <line x1="960" y1="220" x2="960" y2="920" stroke="#00ff88" stroke-width="3" opacity="0.5" filter="url(#glow)"/>
+
+  <!-- Gear mechanism LEFT on door -->
+  <!-- Central gear -->
+  <circle cx="790" cy="570" r="80" fill="none" stroke="#2a6a3a" stroke-width="12"/>
+  <circle cx="790" cy="570" r="60" fill="#0a2a14" stroke="#1a5a28" stroke-width="6"/>
+  <circle cx="790" cy="570" r="20" fill="#0a2a14" stroke="#00a050" stroke-width="4"/>
+  <!-- Gear teeth -->
+  <rect x="770" y="482" width="40" height="22" rx="4" fill="#2a6a3a"/>
+  <rect x="770" y="646" width="40" height="22" rx="4" fill="#2a6a3a"/>
+  <rect x="702" y="550" width="22" height="40" rx="4" fill="#2a6a3a"/>
+  <rect x="866" y="550" width="22" height="40" rx="4" fill="#2a6a3a"/>
+  <rect x="716" y="498" width="22" height="38" rx="4" fill="#2a6a3a" transform="rotate(45, 727, 517)"/>
+  <rect x="848" y="497" width="22" height="38" rx="4" fill="#2a6a3a" transform="rotate(-45, 859, 516)"/>
+  <rect x="716" y="618" width="22" height="38" rx="4" fill="#2a6a3a" transform="rotate(-45, 727, 637)"/>
+  <rect x="848" y="618" width="22" height="38" rx="4" fill="#2a6a3a" transform="rotate(45, 859, 637)"/>
+
+  <!-- Gear mechanism RIGHT on door -->
+  <circle cx="1130" cy="570" r="80" fill="none" stroke="#2a6a3a" stroke-width="12"/>
+  <circle cx="1130" cy="570" r="60" fill="#091e12" stroke="#1a5a28" stroke-width="6"/>
+  <circle cx="1130" cy="570" r="20" fill="#091e12" stroke="#00a050" stroke-width="4"/>
+  <!-- Gear teeth right -->
+  <rect x="1110" y="482" width="40" height="22" rx="4" fill="#2a6a3a"/>
+  <rect x="1110" y="646" width="40" height="22" rx="4" fill="#2a6a3a"/>
+  <rect x="1042" y="550" width="22" height="40" rx="4" fill="#2a6a3a"/>
+  <rect x="1206" y="550" width="22" height="40" rx="4" fill="#2a6a3a"/>
+  <rect x="1056" y="498" width="22" height="38" rx="4" fill="#2a6a3a" transform="rotate(45, 1067, 517)"/>
+  <rect x="1188" y="497" width="22" height="38" rx="4" fill="#2a6a3a" transform="rotate(-45, 1199, 516)"/>
+  <rect x="1056" y="618" width="22" height="38" rx="4" fill="#2a6a3a" transform="rotate(-45, 1067, 637)"/>
+  <rect x="1188" y="618" width="22" height="38" rx="4" fill="#2a6a3a" transform="rotate(45, 1199, 637)"/>
+
+  <!-- Connecting rod between gears -->
+  <rect x="870" y="555" width="88" height="30" rx="10" fill="#1a4a22" stroke="#2a6a32" stroke-width="3"/>
+
+  <!-- Glyphs / inscriptions on the door -->
+  <!-- Top arch glyph panel -->
+  <rect x="700" y="245" width="520" height="50" rx="10" fill="#0a2018"/>
+  <text x="960" y="278" text-anchor="middle"
+    font-family="serif"
+    font-size="24" fill="#00c060" opacity="0.7" letter-spacing="8">✦ ◈ ⬡ ◈ ✦</text>
+
+  <!-- Bottom inscription -->
+  <rect x="700" y="840" width="520" height="50" rx="10" fill="#0a2018"/>
+  <text x="960" y="874" text-anchor="middle"
+    font-family="serif"
+    font-size="20" fill="#00a050" opacity="0.8" letter-spacing="5">SISTEMA DE CALIDAD</text>
+
+  <!-- Door glow emanating from seam -->
+  <rect x="950" y="220" width="20" height="700" fill="#00ff88" opacity="0.06" filter="url(#glow)"/>
+
+  <!-- Explorer examining door -->
+  <!-- Lantern on ground (glowing green) -->
+  <rect x="548" y="758" width="32" height="42" rx="6" fill="#0a2818" stroke="#00a050" stroke-width="2"/>
+  <ellipse cx="564" cy="750" rx="28" ry="20" fill="#002a14" stroke="#00c060" stroke-width="2"/>
+  <ellipse cx="564" cy="750" rx="14" ry="10" fill="#00a050" opacity="0.9"/>
+  <ellipse cx="564" cy="760" rx="50" ry="30" fill="#00a050" opacity="0.06"/>
+
+  <!-- Hat -->
+  <rect x="466" y="600" width="52" height="42" rx="5" fill="#1a0e04"/>
+  <ellipse cx="492" cy="644" rx="63" ry="13" fill="#110a02"/>
+  <!-- Head -->
+  <circle cx="492" cy="675" r="40" fill="#1a0e04"/>
+  <!-- Body -->
+  <ellipse cx="497" cy="750" rx="46" ry="55" fill="#1a0e04" transform="rotate(-8, 497, 750)"/>
+  <!-- Arm touching door (examining) -->
+  <line x1="536" y1="728" x2="622" y2="710" stroke="#110a02" stroke-width="10" stroke-linecap="round"/>
+  <line x1="458" y1="728" x2="430" y2="780" stroke="#110a02" stroke-width="9" stroke-linecap="round"/>
+  <!-- Legs -->
+  <line x1="478" y1="800" x2="462" y2="858" stroke="#1a0e04" stroke-width="13" stroke-linecap="round"/>
+  <line x1="516" y1="800" x2="530" y2="856" stroke="#1a0e04" stroke-width="13" stroke-linecap="round"/>
+  <ellipse cx="460" cy="862" rx="20" ry="10" fill="#110a02"/>
+  <ellipse cx="532" cy="860" rx="20" ry="10" fill="#110a02"/>
+
+  <!-- Scene title -->
+  <text x="960" y="110" text-anchor="middle"
+    font-family="Arial Black, sans-serif"
+    font-size="68" font-weight="900"
+    fill="#00d060" opacity="0.95" letter-spacing="2">DILEMA DE CALIDAD</text>
+  <rect x="460" y="122" width="1000" height="6" fill="#00a050" rx="3"/>
+  <text x="960" y="190" text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="28" fill="#60a880" letter-spacing="2">¿Qué mecanismo activas para abrir la puerta?</text>
+
+  <!-- SIG Badge -->
+  <rect x="760" y="950" width="400" height="50" rx="25" fill="#00702a" opacity="0.9"/>
+  <text x="960" y="984" text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="20" font-weight="700" fill="white" letter-spacing="4">SIG &amp; CALIDAD</text>
+</svg>
