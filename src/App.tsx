@@ -78,56 +78,80 @@ const HomeView = () => {
       <main className="relative w-full h-screen overflow-hidden bg-black text-white font-sans">
         <GameController />
 
-        <div className="fixed top-5 left-5 z-50 flex flex-col gap-3">
+        {/* Capa oscura superior para dar contraste a los botones superiores si se necesita, aunque ahora los centraremos visualmente */}
+        
+        {/* Botones globales de Lobby agrupados arriba a la izquierda para no estorbar con Avelino a la derecha */}
+        <div className="fixed top-5 left-5 md:top-8 md:left-8 z-50 flex flex-col md:flex-row items-start gap-4">
           <button
             onClick={handleCreateRoom}
-            className="px-5 py-3 rounded-full bg-avellano-red text-white text-sm md:text-base font-bold tracking-wide
-              shadow-[0_0_20px_rgba(230,0,0,0.35)] transition-all duration-300 hover:scale-105 hover:bg-red-700 cursor-pointer"
+            className="px-6 py-3 rounded-full bg-avellano-red text-white text-sm md:text-base font-black tracking-widest uppercase
+              shadow-[0_0_25px_rgba(211,17,17,0.4)] transition-all duration-300 hover:scale-105 hover:bg-avellano-accent hover:shadow-[0_0_35px_rgba(232,63,63,0.6)] cursor-pointer
+              border border-white/10"
           >
-            Crear Sala Live
+            Ser Anfitrion
           </button>
 
           <button
-            onClick={() => setShowJoinPanel((previous) => !previous)}
-            className="px-5 py-3 rounded-full bg-black/70 border border-white/20 text-white text-sm md:text-base font-bold tracking-wide
-              backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-black/90 cursor-pointer"
+            onClick={() => navigate('/history')}
+            className="px-6 py-3 rounded-full bg-[var(--color-glass)] border border-[var(--color-glass-border)] text-white text-sm md:text-base font-bold tracking-widest uppercase
+              backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:bg-white/10 cursor-pointer shadow-2xl"
           >
-            Unirse con PIN
+            Ver Historial
           </button>
-        </div>
 
-        {showJoinPanel && (
-          <form
-            onSubmit={handleJoinByPin}
-            className="fixed left-5 top-[138px] z-50 w-[280px] rounded-2xl border border-avellano-red/30 bg-avellano-dark/90 backdrop-blur-xl p-4 shadow-[0_0_30px_rgba(230,0,0,0.2)]"
-          >
-            <label htmlFor="join-pin" className="block text-xs uppercase tracking-[0.2em] text-avellano-red font-bold mb-2">
-              Codigo de sala
-            </label>
-            <input
-              id="join-pin"
-              type="text"
-              value={pin}
-              onChange={(event) => setPin(event.target.value)}
-              placeholder="Ej: UQYPMB"
-              maxLength={8}
-              className="w-full rounded-xl border border-white/15 bg-black/50 px-3 py-2 text-white uppercase
-                focus:outline-none focus:ring-2 focus:ring-avellano-red"
-            />
+          {!showJoinPanel ? (
             <button
-              type="submit"
-              disabled={!pin.trim()}
-              className="mt-3 w-full px-4 py-2 rounded-xl bg-avellano-red hover:bg-red-700 disabled:bg-gray-700 disabled:text-gray-400
-                text-white font-bold transition-colors duration-200 cursor-pointer disabled:cursor-not-allowed"
+              onClick={() => setShowJoinPanel(true)}
+              className="px-6 py-3 rounded-full bg-[var(--color-glass)] border border-[var(--color-glass-border)] text-white text-sm md:text-base font-bold tracking-widest uppercase
+                backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:bg-white/10 cursor-pointer shadow-2xl"
             >
-              Entrar a sala
+              Tengo un PIN
             </button>
-          </form>
-        )}
+          ) : (
+            <form
+              onSubmit={handleJoinByPin}
+              className="w-[320px] rounded-3xl border border-[var(--color-glass-border)] bg-[var(--color-glass)] backdrop-blur-xl p-6 shadow-2xl animate-fade-in-up md:absolute md:top-0 md:left-[110%]"
+            >
+              <div className="flex justify-between items-center mb-4">
+                <label htmlFor="join-pin" className="block text-xs uppercase tracking-[0.2em] text-gray-400 font-bold">
+                  Ingresa a la sala
+                </label>
+                <button 
+                  type="button" 
+                  onClick={() => setShowJoinPanel(false)}
+                  className="text-gray-500 hover:text-white transition-colors cursor-pointer"
+                >
+                  ✕
+                </button>
+              </div>
+              <input
+                id="join-pin"
+                type="text"
+                value={pin}
+                onChange={(event) => setPin(event.target.value)}
+                placeholder="PIN Ej: OQXX9"
+                maxLength={8}
+                className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-4 text-white text-center text-xl tracking-widest uppercase font-black
+                  focus:outline-none focus:ring-2 focus:ring-avellano-red transition-all shadow-inner mb-4"
+              />
+              <button
+                type="submit"
+                disabled={!pin.trim()}
+                className="w-full px-4 py-4 rounded-xl bg-avellano-red hover:bg-avellano-accent disabled:bg-gray-800 disabled:text-gray-500 disabled:border-transparent
+                  text-white font-black tracking-widest uppercase transition-all duration-300 cursor-pointer disabled:cursor-not-allowed
+                  border border-white/10 shadow-[0_0_15px_rgba(211,17,17,0.3)]"
+              >
+                Conectar
+              </button>
+            </form>
+          )}
+        </div>
       </main>
     </GameProvider>
   );
 };
+
+import { HistoryView } from './views/HistoryView';
 
 function App() {
   return (
@@ -136,6 +160,7 @@ function App() {
         <Route path="/" element={<HomeView />} />
         <Route path="/host/:roomId" element={<HostView />} />
         <Route path="/play/:roomId" element={<PlayerView />} />
+        <Route path="/history" element={<HistoryView />} />
       </Routes>
     </BrowserRouter>
   );

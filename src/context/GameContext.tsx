@@ -96,7 +96,7 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
   const currentNode = nodes.find(n => n.id === currentNodeId) ?? nodes[0];
 
   useEffect(() => {
-    audio.playBgm(currentNode.audioBgm);
+    audio.playLegacyBgm(currentNode.audioBgm);
   }, [currentNode.audioBgm]);
 
   useEffect(() => {
@@ -104,7 +104,7 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
   }, [isMuted]);
 
   const makeChoice = (choice: Choice, node: StoryNode) => {
-    if (choice.sfx) audio.playSfx(choice.sfx);
+    if (choice.sfx) audio.playLegacySfx(choice.sfx);
     setHistory(prev => [...prev, choice.nextNode]);
 
     // Solo registrar puntuación y auditoría en nodos de dilema

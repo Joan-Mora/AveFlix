@@ -35,6 +35,7 @@ export const PlayerView = () => {
   const [remainingMs, setRemainingMs] = useState(0);
   const [hasVoted, setHasVoted] = useState(false);
   const [leaderboardEntries, setLeaderboardEntries] = useState<LeaderboardEntry[]>([]);
+  const [isDangerTime, setIsDangerTime] = useState(false);
 
   const cleanName = useMemo(() => playerName.trim(), [playerName]);
   const currentQuestionNode = useMemo(() => {
@@ -86,6 +87,9 @@ export const PlayerView = () => {
     const tick = () => {
       const nextRemaining = Math.max(0, endsAt - Date.now());
       setRemainingMs(nextRemaining);
+      
+      const secondsLeft = Math.ceil(nextRemaining / 1000);
+      setIsDangerTime(secondsLeft <= 5 && secondsLeft > 0);
     };
 
     tick();
@@ -179,8 +183,8 @@ export const PlayerView = () => {
     }
 
     return (
-      <main className="min-h-screen bg-black text-white px-4 py-6">
-        <section className="mx-auto w-full max-w-xl rounded-3xl border border-avellano-red/30 bg-avellano-dark/90 backdrop-blur-xl p-5 shadow-[0_0_35px_rgba(230,0,0,0.18)]">
+      <main className={`min-h-screen bg-black text-white px-4 py-6 transition-all duration-300 ${isDangerTime ? 'shadow-[inset_0_0_80px_rgba(255,0,0,0.4)]' : ''}`}>
+        <section className={`mx-auto w-full max-w-xl rounded-3xl border ${isDangerTime ? 'border-red-500' : 'border-avellano-red/30'} bg-avellano-dark/90 backdrop-blur-xl p-5 shadow-[0_0_35px_rgba(230,0,0,0.18)] transition-colors duration-300`}>
           <p className="text-xs uppercase tracking-[0.35em] text-avellano-red mb-4 font-bold">Pregunta en curso</p>
 
           <div className="mb-4">
@@ -190,20 +194,47 @@ export const PlayerView = () => {
             <div className="mt-2 text-right text-sm text-avellano-red font-black tabular-nums">{(remainingMs / 1000).toFixed(1)}s</div>
           </div>
 
-          <h1 className="text-xl font-black mb-5">{currentQuestionNode.title}</h1>
+          <h1 className="text-xl font-black mb-5 text-center">{currentQuestionNode.title}</h1>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-4 pb-2">
             {currentQuestionNode.choices.map((choice, index) => (
               <button
                 key={choice.id}
                 onClick={() => handleVote({ id: choice.id, text: choice.text })}
-                className={`rounded-2xl p-4 text-left font-bold text-white min-h-[90px] transition-all duration-200 cursor-pointer hover:scale-[1.02]
-                  ${index === 0 ? 'bg-red-600 hover:bg-red-500' : ''}
-                  ${index === 1 ? 'bg-blue-600 hover:bg-blue-500' : ''}
-                  ${index === 2 ? 'bg-yellow-500 hover:bg-yellow-400 text-black' : ''}
-                  ${index === 3 ? 'bg-green-600 hover:bg-green-500' : ''}`}
+                className={`relative flex items-center justify-center p-6 rounded-3xl transition-all duration-300 min-h-[140px] overflow-hidden group 
+                  shadow-xl cursor-pointer transform hover:scale-105 border backdrop-blur-md bg-black/40
+                  ${index === 0 ? 'border-red-500/50 hover:border-red-400 hover:bg-red-900/40 shadow-[0_0_20px_rgba(239,68,68,0.25)]' : ''}
+                  ${index === 1 ? 'border-blue-500/50 hover:border-blue-400 hover:bg-blue-900/40 shadow-[0_0_20px_rgba(59,130,246,0.25)]' : ''}
+                  ${index === 2 ? 'border-yellow-500/50 hover:border-yellow-400 hover:bg-yellow-900/40 shadow-[0_0_20px_rgba(234,179,8,0.25)]' : ''}
+                  ${index === 3 ? 'border-green-500/50 hover:border-green-400 hover:bg-green-900/40 shadow-[0_0_20px_rgba(34,197,94,0.25)]' : ''}
+                `}
               >
-                {choice.text}
+                <div className="relative z-10 w-20 h-20 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
+                  {/* Triangulo Rojo */}
+                  {index === 0 && (
+                    <svg viewBox="0 0 100 100" className="w-full h-full text-red-500 drop-shadow-[0_0_15px_rgba(239,68,68,0.8)] fill-current">
+                      <polygon points="50,15 90,85 10,85" />
+                    </svg>
+                  )}
+                  {/* Cuadrado Azul */}
+                  {index === 1 && (
+                    <svg viewBox="0 0 100 100" className="w-full h-full text-blue-500 drop-shadow-[0_0_15px_rgba(59,130,246,0.8)] fill-current">
+                      <rect x="15" y="15" width="70" height="70" rx="8" />
+                    </svg>
+                  )}
+                  {/* Circulo Amarillo */}
+                  {index === 2 && (
+                    <svg viewBox="0 0 100 100" className="w-full h-full text-yellow-500 drop-shadow-[0_0_15px_rgba(234,179,8,0.8)] fill-current">
+                      <circle cx="50" cy="50" r="35" />
+                    </svg>
+                  )}
+                  {/* Rombo Verde */}
+                  {index === 3 && (
+                    <svg viewBox="0 0 100 100" className="w-full h-full text-green-500 drop-shadow-[0_0_15px_rgba(34,197,94,0.8)] fill-current">
+                      <polygon points="50,15 85,50 50,85 15,50" />
+                    </svg>
+                  )}
+                </div>
               </button>
             ))}
           </div>
@@ -239,18 +270,24 @@ export const PlayerView = () => {
   }
 
   if (joined && phase === 'FEEDBACK_LOOP') {
+    const correctIndex = currentQuestionNode?.choices.findIndex(c => c.isCorrect) ?? -1;
+    const correctChoice = correctIndex >= 0 ? currentQuestionNode?.choices[correctIndex] : null;
+
     return (
-      <main className="min-h-screen bg-black text-white px-4 py-8 flex items-center justify-center">
-        <section className="w-full max-w-md rounded-3xl border border-avellano-red/30 bg-avellano-dark/85 backdrop-blur-xl p-8 text-center shadow-[0_0_35px_rgba(230,0,0,0.18)]">
-          <p className="text-xs uppercase tracking-[0.35em] text-avellano-red mb-4 font-bold">AveFlix Live · Player</p>
-          <div className="mx-auto mb-4 w-14 h-14 rounded-full bg-yellow-500/20 border border-yellow-400/50 grid place-items-center">
-            <svg className="w-8 h-8 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-            </svg>
-          </div>
-          <h1 className="text-3xl font-black mb-3">Momento de aprendizaje</h1>
-          <p className="text-gray-300 leading-relaxed">Presta atencion a la explicacion en la pantalla principal.</p>
-        </section>
+      <main className="min-h-screen bg-black text-white flex flex-col p-6 items-center justify-center text-center">
+        <p className="text-xs uppercase tracking-[0.3em] text-green-400 font-bold mb-6">¡Respuesta Correcta!</p>
+
+        <div className="w-32 h-32 mb-6 drop-shadow-[0_0_20px_rgba(255,255,255,0.4)] animate-bounce">
+          {correctIndex === 0 && <svg viewBox="0 0 100 100" className="w-full h-full text-red-500 fill-current drop-shadow-[0_0_15px_rgba(239,68,68,0.8)]"><polygon points="50,15 90,85 10,85" /></svg>}
+          {correctIndex === 1 && <svg viewBox="0 0 100 100" className="w-full h-full text-blue-500 fill-current drop-shadow-[0_0_15px_rgba(59,130,246,0.8)]"><rect x="15" y="15" width="70" height="70" rx="8" /></svg>}
+          {correctIndex === 2 && <svg viewBox="0 0 100 100" className="w-full h-full text-yellow-500 fill-current drop-shadow-[0_0_15px_rgba(234,179,8,0.8)]"><circle cx="50" cy="50" r="35" /></svg>}
+          {correctIndex === 3 && <svg viewBox="0 0 100 100" className="w-full h-full text-green-500 fill-current drop-shadow-[0_0_15px_rgba(34,197,94,0.8)]"><polygon points="50,15 85,50 50,85 15,50" /></svg>}
+        </div>
+
+        {correctChoice && (
+          <h2 className="text-xl md:text-2xl font-black mb-4 text-white">{correctChoice.text}</h2>
+        )}
+        <p className="text-gray-500 text-sm mt-4">Mira la pantalla principal para ver la explicación.</p>
       </main>
     );
   }

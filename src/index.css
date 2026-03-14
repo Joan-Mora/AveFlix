@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-avellano-dark: #1a1a1a;
-  --color-avellano-red: #e60000;
+  --color-avellano-dark: #0A0A0A; /* Deeper, richer black */
+  --color-avellano-red: #D31111; /* More elegant, less saturated corporate red */
+  --color-avellano-accent: #E83F3F; /* Brighter accent for hover states */
+  --color-glass: rgba(20, 20, 20, 0.65); /* Elegant dark glass base */
+  --color-glass-border: rgba(255, 255, 255, 0.08); /* Subtle glass edge */
 
   /* Animación de entrada: sube desde abajo con fade */
   --animate-fade-in-up: fade-in-up 0.5s ease-out forwards;

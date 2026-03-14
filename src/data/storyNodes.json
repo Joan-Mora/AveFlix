@@ -5,784 +5,1540 @@
       "nodeType": "start",
       "pillar": "none",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/portada.svg",
+      "mediaUrl": "/assets/images/avelino_dark_bg.png",
       "audioBgm": "/assets/audio/intro.mp3",
-      "title": "AveFlix: Temporada 1",
-      "text": "El Origen: En busca del Tesoro. Bienvenido, explorador. La verdadera prueba comienza ahora. Esta listo para demostrar su valia en Avellano?",
-      "isFeedback": false,
-      "isEnd": false,
+      "title": "Misión: Excelencia Operativa",
+      "text": "Temporada 1: En busca de la Excelencia. Bienvenido, Líder de Expedición. El desafío estratégico comienza ahora en el dinámico ecosistema competitivo. ¿Estás preparado para demostrar tu ADN Avellano y guiar a tu equipo hacia el éxito?",
       "choices": [
-        { "id": "start_btn", "text": "Comenzar Expedicion", "nextNode": "c1_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": true, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "start_btn",
+          "text": "Comenzar gestión",
+          "nextNode": "q1",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": true,
+          "sfx": "/assets/audio/click.mp3"
+        }
       ]
     },
-
     {
-      "id": "c1_dilema_1",
+      "id": "q1",
       "nodeType": "dilemma",
       "pillar": "Cultura",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_dilema.svg",
+      "mediaUrl": "/assets/images/scene_q1.png",
       "audioBgm": "/assets/audio/misterio.mp3",
-      "title": "Capitulo 1 - Dilema 1: El mapa dividido",
-      "text": "Dos exploradores del equipo tienen versiones distintas del mapa. El tiempo corre y la ruta al campamento no es clara. Que haces?",
-      "isFeedback": false,
-      "isEnd": false,
+      "title": "Cultura - Desempeño",
+      "text": "Avelino convoca a su equipo de alto rendimiento para analizar los objetivos trazados. Para asegurar el cumplimiento de las metas, es fundamental comprender la filosofía de trabajo.\n\nUn colaborador competitivo en Avellano es alguien que:",
       "choices": [
-        { "id": "c1_d1_a", "text": "Ignorar la discusion y avanzar con tu propio criterio.", "nextNode": "c1_fail_1A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "comunicacion_rota", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c1_d1_b", "text": "Elegir al explorador mas cercano y descalificar al otro sin escucharlo.", "nextNode": "c1_fail_1B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "egoismo", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c1_d1_c", "text": "Reunir al equipo, comparar ambas versiones y acordar una sola ruta validada.", "nextNode": "c1_dilema_2", "points": 1000, "pillarPoints": { "Cultura": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
-        { "id": "c1_d1_d", "text": "Enviar mensajes contradictorios para que cada grupo pruebe caminos distintos.", "nextNode": "c1_fail_1C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "desinformacion", "sfx": "/assets/audio/error.mp3" }
+        {
+          "id": "q1_opt_a",
+          "text": "Fomenta la rivalidad interna para destacar individualmente",
+          "nextNode": "q1_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q1"
+        },
+        {
+          "id": "q1_opt_b",
+          "text": "Busca mejorar continuamente su desempeño personal y grupal",
+          "nextNode": "q2",
+          "points": 1000,
+          "pillarPoints": {
+            "Cultura": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q1_opt_c",
+          "text": "Prioriza su visibilidad sobre los resultados del equipo",
+          "nextNode": "q1_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q1"
+        },
+        {
+          "id": "q1_opt_d",
+          "text": "Centraliza el conocimiento para volverse indispensable",
+          "nextNode": "q1_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q1"
+        }
       ]
     },
     {
-      "id": "c1_fail_1A",
+      "id": "q1_fail",
       "nodeType": "feedback_fail",
       "pillar": "Cultura",
-      "failType": "comunicacion_rota",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
+      "mediaUrl": "/assets/images/scene_q1.png",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Comunicacion rota",
-      "text": "Actuar sin alinear al equipo rompe la coordinacion y aumenta el riesgo operativo.",
-      "retryNode": "c1_dilema_1",
-      "isFeedback": true,
-      "isEnd": false,
+      "title": "Desviación en Cultura",
+      "text": "El verdadero marco competitivo exige una mejora continua personal que potencie al equipo, no la rivalidad interna.",
+      "retryNode": "q1",
       "choices": [
-        { "id": "c1_retry_1A", "text": "Entendido", "nextNode": "c1_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "q1_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q1",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
       ]
     },
     {
-      "id": "c1_fail_1B",
-      "nodeType": "feedback_fail",
-      "pillar": "Cultura",
-      "failType": "egoismo",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Egoismo",
-      "text": "Invalidar aportes sin evidencia deteriora la confianza. La cultura exige respeto y colaboracion.",
-      "retryNode": "c1_dilema_1",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c1_retry_1B", "text": "Entendido", "nextNode": "c1_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-    {
-      "id": "c1_fail_1C",
-      "nodeType": "feedback_fail",
-      "pillar": "Cultura",
-      "failType": "desinformacion",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Desinformacion",
-      "text": "Mensajes inconsistentes provocan caos. Un equipo de alto desempeno comunica con una sola voz.",
-      "retryNode": "c1_dilema_1",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c1_retry_1C", "text": "Entendido", "nextNode": "c1_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-
-    {
-      "id": "c1_dilema_2",
+      "id": "q2",
       "nodeType": "dilemma",
       "pillar": "Cultura",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_dilema.svg",
+      "mediaUrl": "/assets/images/scene_q2.png",
       "audioBgm": "/assets/audio/misterio.mp3",
-      "title": "Capitulo 1 - Dilema 2: Turno de guardia",
-      "text": "Un companero reporta cansancio extremo antes de tomar su turno de vigilancia nocturna. Que decides?",
-      "isFeedback": false,
-      "isEnd": false,
+      "title": "Cultura - Servicio",
+      "text": "Durante la ejecución del proyecto, un integrante del equipo se encuentra abrumado por la alta carga operativa. Avelino decide intervenir estratégicamente.\n\nSer servicial significa:",
       "choices": [
-        { "id": "c1_d2_a", "text": "Pedirle que cumpla igual para no alterar el plan.", "nextNode": "c1_fail_2A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "falta_escucha", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c1_d2_b", "text": "Asumir que exagera y burlarte del reporte frente al equipo.", "nextNode": "c1_fail_2B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "juicio_apresurado", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c1_d2_c", "text": "Redistribuir el turno, evaluar riesgo y priorizar seguridad del equipo.", "nextNode": "c1_dilema_3", "points": 1000, "pillarPoints": { "Cultura": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
-        { "id": "c1_d2_d", "text": "Ocultar la novedad para evitar discusiones en la reunion diaria.", "nextNode": "c1_fail_2C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "ocultamiento", "sfx": "/assets/audio/error.mp3" }
+        {
+          "id": "q2_opt_a",
+          "text": "Asumir permanentemente las funciones del otro",
+          "nextNode": "q2_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q2"
+        },
+        {
+          "id": "q2_opt_b",
+          "text": "Brindar apoyo estratégico cuando el compañero lo requiere",
+          "nextNode": "q3",
+          "points": 1000,
+          "pillarPoints": {
+            "Cultura": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q2_opt_c",
+          "text": "Evitar involucrarse para no generar discrepancias",
+          "nextNode": "q2_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q2"
+        },
+        {
+          "id": "q2_opt_d",
+          "text": "Limitarse estrictamente a la descripción de su cargo",
+          "nextNode": "q2_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q2"
+        }
       ]
     },
     {
-      "id": "c1_fail_2A",
+      "id": "q2_fail",
       "nodeType": "feedback_fail",
       "pillar": "Cultura",
-      "failType": "falta_escucha",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
+      "mediaUrl": "/assets/images/scene_q2.png",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Falta de escucha",
-      "text": "Ignorar alertas humanas rompe el cuidado mutuo. Escuchar es una competencia critica de equipo.",
-      "retryNode": "c1_dilema_2",
-      "isFeedback": true,
-      "isEnd": false,
+      "title": "Desviación en Cultura",
+      "text": "El servicio corporativo implica sinergia y soporte estratégico ante picos operativos, sin suplantar responsabilidades.",
+      "retryNode": "q2",
       "choices": [
-        { "id": "c1_retry_2A", "text": "Entendido", "nextNode": "c1_dilema_2", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "q2_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q2",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
       ]
     },
     {
-      "id": "c1_fail_2B",
-      "nodeType": "feedback_fail",
-      "pillar": "Cultura",
-      "failType": "juicio_apresurado",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Juicio apresurado",
-      "text": "Ridiculizar reportes destruye la confianza psicologica y reduce la calidad de decisiones.",
-      "retryNode": "c1_dilema_2",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c1_retry_2B", "text": "Entendido", "nextNode": "c1_dilema_2", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-    {
-      "id": "c1_fail_2C",
-      "nodeType": "feedback_fail",
-      "pillar": "Cultura",
-      "failType": "ocultamiento",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Ocultamiento",
-      "text": "Ocultar informacion operativa afecta la transparencia y compromete a todo el frente de trabajo.",
-      "retryNode": "c1_dilema_2",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c1_retry_2C", "text": "Entendido", "nextNode": "c1_dilema_2", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-
-    {
-      "id": "c1_dilema_3",
+      "id": "q3",
       "nodeType": "dilemma",
       "pillar": "Cultura",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_dilema.svg",
+      "mediaUrl": "/assets/images/scene_q3.png",
       "audioBgm": "/assets/audio/misterio.mp3",
-      "title": "Capitulo 1 - Dilema 3: Decision de cruce",
-      "text": "El equipo debe cruzar un paso estrecho. Hay tres propuestas distintas y el clima empeora. Como decides?",
-      "isFeedback": false,
-      "isEnd": false,
+      "title": "Cultura - Identidad",
+      "text": "Al identificar los cimientos del éxito en un proyecto anterior, el equipo establece un modelo a seguir.\n\nLa combinación de nuestros valores más una actitud competitiva y servicial define:",
       "choices": [
-        { "id": "c1_d3_a", "text": "Improvisar sin consenso para ganar tiempo.", "nextNode": "c1_fail_3A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "improvisacion_sin_consenso", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c1_d3_b", "text": "Imponer tu criterio por jerarquia sin escuchar riesgos.", "nextNode": "c1_fail_3B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "imposicion_autoritaria", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c1_d3_c", "text": "Facilitar una decision rapida con roles claros y consenso operativo.", "nextNode": "c1_dilema_4", "points": 1000, "pillarPoints": { "Cultura": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
-        { "id": "c1_d3_d", "text": "Permitir rumores de peligro sin validar fuentes.", "nextNode": "c1_fail_3C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "rumor_operativo", "sfx": "/assets/audio/error.mp3" }
+        {
+          "id": "q3_opt_a",
+          "text": "El reglamento normativo interno",
+          "nextNode": "q3_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q3"
+        },
+        {
+          "id": "q3_opt_b",
+          "text": "El perfil estratégico del colaborador Avellano",
+          "nextNode": "q4",
+          "points": 1000,
+          "pillarPoints": {
+            "Cultura": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q3_opt_c",
+          "text": "El manual de procedimientos operativos",
+          "nextNode": "q3_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q3"
+        },
+        {
+          "id": "q3_opt_d",
+          "text": "El marco de certificación corporativa",
+          "nextNode": "q3_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q3"
+        }
       ]
     },
     {
-      "id": "c1_fail_3A",
+      "id": "q3_fail",
       "nodeType": "feedback_fail",
       "pillar": "Cultura",
-      "failType": "improvisacion_sin_consenso",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
+      "mediaUrl": "/assets/images/scene_q3.png",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Improvisacion sin consenso",
-      "text": "La velocidad sin alineacion aumenta errores. El equipo debe acordar antes de ejecutar.",
-      "retryNode": "c1_dilema_3",
-      "isFeedback": true,
-      "isEnd": false,
+      "title": "Desviación en Cultura",
+      "text": "Nuestro ADN operativo está codificado estructuralmente en el perfil del colaborador Avellano.",
+      "retryNode": "q3",
       "choices": [
-        { "id": "c1_retry_3A", "text": "Entendido", "nextNode": "c1_dilema_3", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "q3_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q3",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
       ]
     },
     {
-      "id": "c1_fail_3B",
-      "nodeType": "feedback_fail",
-      "pillar": "Cultura",
-      "failType": "imposicion_autoritaria",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Imposicion autoritaria",
-      "text": "Liderar no es imponer. La autoridad efectiva integra criterio tecnico y voz del equipo.",
-      "retryNode": "c1_dilema_3",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c1_retry_3B", "text": "Entendido", "nextNode": "c1_dilema_3", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-    {
-      "id": "c1_fail_3C",
-      "nodeType": "feedback_fail",
-      "pillar": "Cultura",
-      "failType": "rumor_operativo",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Rumor operativo",
-      "text": "Decidir con rumores provoca caos. La cultura exige hechos, trazabilidad y comunicacion responsable.",
-      "retryNode": "c1_dilema_3",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c1_retry_3C", "text": "Entendido", "nextNode": "c1_dilema_3", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-
-    {
-      "id": "c1_dilema_4",
+      "id": "q4",
       "nodeType": "dilemma",
       "pillar": "Cultura",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_dilema.svg",
+      "mediaUrl": "/assets/images/scene_q4.png",
       "audioBgm": "/assets/audio/misterio.mp3",
-      "title": "Capitulo 1 - Dilema 4: Recursos limitados",
-      "text": "Solo queda un kit medico y dos frentes lo solicitan al mismo tiempo. Cual es tu accion?",
-      "isFeedback": false,
-      "isEnd": false,
+      "title": "Cultura - Adaptabilidad",
+      "text": "El equipo se enfrenta a un escenario de alta incertidumbre en el mercado y algunos miembros muestran resistencia a adaptarse.\n\n¿Cuál de los siguientes NO hace parte de los valores de la cultura Avellano?",
       "choices": [
-        { "id": "c1_d4_a", "text": "Entregarlo al frente que te cae mejor, sin criterios.", "nextNode": "c1_fail_4A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "exclusion_equipo", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c1_d4_b", "text": "Guardar el recurso para tu cuadrilla por si acaso.", "nextNode": "c1_fail_4B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "prioridad_personal", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c1_d4_c", "text": "Priorizar por criticidad, comunicar criterio y coordinar reposicion inmediata.", "nextNode": "c1_dilema_5", "points": 1000, "pillarPoints": { "Cultura": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
-        { "id": "c1_d4_d", "text": "Prometerlo a ambos frentes y resolver despues.", "nextNode": "c1_fail_4C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "promesa_incumplida", "sfx": "/assets/audio/error.mp3" }
+        {
+          "id": "q4_opt_a",
+          "text": "Confianza transversal",
+          "nextNode": "q4_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q4"
+        },
+        {
+          "id": "q4_opt_b",
+          "text": "Transparencia y Honestidad",
+          "nextNode": "q4_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q4"
+        },
+        {
+          "id": "q4_opt_c",
+          "text": "Empatía organizacional",
+          "nextNode": "q4_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q4"
+        },
+        {
+          "id": "q4_opt_d",
+          "text": "Resistencia dogmática al cambio",
+          "nextNode": "q5",
+          "points": 1000,
+          "pillarPoints": {
+            "Cultura": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        }
       ]
     },
     {
-      "id": "c1_fail_4A",
+      "id": "q4_fail",
       "nodeType": "feedback_fail",
       "pillar": "Cultura",
-      "failType": "exclusion_equipo",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
+      "mediaUrl": "/assets/images/scene_q4.png",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Exclusion del equipo",
-      "text": "Asignar recursos por preferencia personal genera inequidad y friccion entre equipos.",
-      "retryNode": "c1_dilema_4",
-      "isFeedback": true,
-      "isEnd": false,
+      "title": "Desviación en Cultura",
+      "text": "La innovación exige adaptabilidad. La resistencia sistemática al cambio frena la competitividad.",
+      "retryNode": "q4",
       "choices": [
-        { "id": "c1_retry_4A", "text": "Entendido", "nextNode": "c1_dilema_4", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "q4_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q4",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
       ]
     },
     {
-      "id": "c1_fail_4B",
-      "nodeType": "feedback_fail",
-      "pillar": "Cultura",
-      "failType": "prioridad_personal",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Prioridad personal",
-      "text": "Acaparar recursos rompe la colaboracion. La prioridad es el impacto global de la operacion.",
-      "retryNode": "c1_dilema_4",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c1_retry_4B", "text": "Entendido", "nextNode": "c1_dilema_4", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-    {
-      "id": "c1_fail_4C",
-      "nodeType": "feedback_fail",
-      "pillar": "Cultura",
-      "failType": "promesa_incumplida",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Promesa incumplida",
-      "text": "Prometer sin respaldo dania la credibilidad del liderazgo y la disciplina operativa.",
-      "retryNode": "c1_dilema_4",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c1_retry_4C", "text": "Entendido", "nextNode": "c1_dilema_4", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-
-    {
-      "id": "c1_dilema_5",
+      "id": "q5",
       "nodeType": "dilemma",
       "pillar": "Cultura",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_dilema.svg",
+      "mediaUrl": "/assets/images/scene_q5.png",
       "audioBgm": "/assets/audio/misterio.mp3",
-      "title": "Capitulo 1 - Dilema 5: Cierre del campamento",
-      "text": "Antes de avanzar al siguiente territorio, debes cerrar hallazgos, lecciones y pendientes entre areas. Como procedes?",
-      "isFeedback": false,
-      "isEnd": false,
+      "title": "Cultura - Liderazgo",
+      "text": "Avelino necesita delegar la supervisión de un proceso crítico para cumplir con los tiempos de entrega. Para certificar el valor de 'Confianza', él debe:",
       "choices": [
-        { "id": "c1_d5_a", "text": "Cerrar solo con tu area y dejar al resto para despues.", "nextNode": "c1_fail_5A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "conflicto_interareas", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c1_d5_b", "text": "Priorizar resultados rapidos aunque contradigan los valores acordados.", "nextNode": "c1_fail_5B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "desalineacion_valores", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c1_d5_c", "text": "Realizar cierre transversal con compromisos claros y lecciones compartidas.", "nextNode": "c2_dilema_1", "points": 1000, "pillarPoints": { "Cultura": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
-        { "id": "c1_d5_d", "text": "Evitar documentar errores para proteger reputaciones individuales.", "nextNode": "c1_fail_5C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "negacion_responsabilidad", "sfx": "/assets/audio/error.mp3" }
+        {
+          "id": "q5_opt_a",
+          "text": "Micromanejar cada detalle del proceso asignado.",
+          "nextNode": "q5_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q5"
+        },
+        {
+          "id": "q5_opt_b",
+          "text": "Asumir preventivamente que habrá fallas e intervenir.",
+          "nextNode": "q5_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q5"
+        },
+        {
+          "id": "q5_opt_c",
+          "text": "Ceder autonomía confiando en la capacidad de ejecución del equipo.",
+          "nextNode": "q6",
+          "points": 1000,
+          "pillarPoints": {
+            "Cultura": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q5_opt_d",
+          "text": "Revertir la delegación y ejecutar la tarea directamente.",
+          "nextNode": "q5_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q5"
+        }
       ]
     },
     {
-      "id": "c1_fail_5A",
+      "id": "q5_fail",
       "nodeType": "feedback_fail",
       "pillar": "Cultura",
-      "failType": "conflicto_interareas",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
+      "mediaUrl": "/assets/images/scene_q5.png",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Conflicto entre areas",
-      "text": "Sin cierre transversal se pierden dependencias criticas y aparecen reprocesos.",
-      "retryNode": "c1_dilema_5",
-      "isFeedback": true,
-      "isEnd": false,
+      "title": "Desviación en Cultura",
+      "text": "La Confianza se demuestra delegando efectivamente y empoderando al talento para la toma de decisiones.",
+      "retryNode": "q5",
       "choices": [
-        { "id": "c1_retry_5A", "text": "Entendido", "nextNode": "c1_dilema_5", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "q5_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q5",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
       ]
     },
     {
-      "id": "c1_fail_5B",
+      "id": "q6",
+      "nodeType": "dilemma",
+      "pillar": "Cultura",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q6.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Cultura - Responsabilidad",
+      "text": "Durante la evaluación del proyecto, Avelino detecta un error de cálculo en la ruta crítica que él mismo formuló. La acción más congruente con el valor de 'Honestidad' es:",
+      "choices": [
+        {
+          "id": "q6_opt_a",
+          "text": "Atribuir la desviación a factores externos incontrolables.",
+          "nextNode": "q6_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q6"
+        },
+        {
+          "id": "q6_opt_b",
+          "text": "Omitir el reporte del error para salvaguardar su reputación.",
+          "nextNode": "q6_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q6"
+        },
+        {
+          "id": "q6_opt_c",
+          "text": "Notificar la desviación oportunamente y liderar la acción correctiva.",
+          "nextNode": "q7",
+          "points": 1000,
+          "pillarPoints": {
+            "Cultura": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q6_opt_d",
+          "text": "Aguardar a que la auditoría detecte la inconformidad.",
+          "nextNode": "q6_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q6"
+        }
+      ]
+    },
+    {
+      "id": "q6_fail",
       "nodeType": "feedback_fail",
       "pillar": "Cultura",
-      "failType": "desalineacion_valores",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
+      "mediaUrl": "/assets/images/scene_q6.png",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Desalineacion de valores",
-      "text": "Los resultados sin cultura no son sostenibles. El como logramos importa tanto como el que.",
-      "retryNode": "c1_dilema_5",
-      "isFeedback": true,
-      "isEnd": false,
+      "title": "Desviación en Cultura",
+      "text": "La Honestidad profesional requiere escalamiento oportuno de errores para aplicar acciones correctivas tempranas.",
+      "retryNode": "q6",
       "choices": [
-        { "id": "c1_retry_5B", "text": "Entendido", "nextNode": "c1_dilema_5", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "q6_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q6",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
       ]
     },
     {
-      "id": "c1_fail_5C",
+      "id": "q7",
+      "nodeType": "dilemma",
+      "pillar": "Cultura",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q7.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Cultura - Gestión Humana",
+      "text": "Un nuevo talento recién integrado al equipo se siente inseguro ante un desafío técnico complejo. ¿Cómo demuestra Avelino 'Empatía' en este escenario?",
+      "choices": [
+        {
+          "id": "q7_opt_a",
+          "text": "Exponer públicamente su falta de experiencia para presionarlo a mejorar.",
+          "nextNode": "q7_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q7"
+        },
+        {
+          "id": "q7_opt_b",
+          "text": "Obligarlo a asumir el liderazgo de la tarea sin acompañamiento previo.",
+          "nextNode": "q7_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q7"
+        },
+        {
+          "id": "q7_opt_c",
+          "text": "Comprender su curva de aprendizaje, brindarle mentoría y acompañamiento.",
+          "nextNode": "q8",
+          "points": 1000,
+          "pillarPoints": {
+            "Cultura": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q7_opt_d",
+          "text": "Reasignar la tarea a otro talento y aislar al nuevo integrante.",
+          "nextNode": "q7_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q7"
+        }
+      ]
+    },
+    {
+      "id": "q7_fail",
       "nodeType": "feedback_fail",
       "pillar": "Cultura",
-      "failType": "negacion_responsabilidad",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/cultura_error.svg",
+      "mediaUrl": "/assets/images/scene_q7.png",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Negacion de responsabilidad",
-      "text": "Ocultar errores impide aprender. La mejora continua requiere verdad y trazabilidad.",
-      "retryNode": "c1_dilema_5",
-      "isFeedback": true,
-      "isEnd": false,
+      "title": "Desviación en Cultura",
+      "text": "La Empatía gerencial consiste en entender el nivel madurativo del talento y proveer la mentoría adecuada.",
+      "retryNode": "q7",
       "choices": [
-        { "id": "c1_retry_5C", "text": "Entendido", "nextNode": "c1_dilema_5", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "q7_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q7",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
       ]
     },
-
     {
-      "id": "c2_dilema_1",
+      "id": "q8",
       "nodeType": "dilemma",
       "pillar": "SST",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_inestable.svg",
-      "audioBgm": "/assets/audio/suspenso.mp3",
-      "title": "Capitulo 2 - Dilema 1: Ingreso al tunel",
-      "text": "El equipo debe entrar a un tunel con baja visibilidad y posible presencia de gases. Que haces antes de autorizar el ingreso?",
-      "isFeedback": false,
-      "isEnd": false,
+      "mediaUrl": "/assets/images/scene_q8.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "SST - Directrices",
+      "text": "Frente a un entorno regulatorio estricto, el equipo debe alinear sus operaciones. ¿Qué es una política dentro de una organización?",
       "choices": [
-        { "id": "c2_d1_a", "text": "Ingresar de inmediato para no perder tiempo.", "nextNode": "c2_fail_1A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "omision_permiso_trabajo", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c2_d1_b", "text": "Enviar solo a un voluntario sin medicion previa.", "nextNode": "c2_fail_1B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "atm_no_verificada", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c2_d1_c", "text": "Aplicar permiso de trabajo, medir atmosfera y definir control de ingreso.", "nextNode": "c2_dilema_2", "points": 1000, "pillarPoints": { "SST": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
-        { "id": "c2_d1_d", "text": "Confiar en experiencia previa y omitir checklists.", "nextNode": "c2_fail_1C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "exceso_confianza", "sfx": "/assets/audio/error.mp3" }
+        {
+          "id": "q8_opt_a",
+          "text": "Una tarea rutinaria ejecutada en el horario laboral.",
+          "nextNode": "q8_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q8"
+        },
+        {
+          "id": "q8_opt_b",
+          "text": "Una directriz estratégica que establece principios, compromisos y límites de actuación.",
+          "nextNode": "q9",
+          "points": 1000,
+          "pillarPoints": {
+            "SST": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q8_opt_c",
+          "text": "Un listado secuencial de actividades por departamento.",
+          "nextNode": "q8_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q8"
+        },
+        {
+          "id": "q8_opt_d",
+          "text": "Un registro histórico de indicadores de gestión.",
+          "nextNode": "q8_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q8"
+        }
       ]
     },
     {
-      "id": "c2_fail_1A",
+      "id": "q8_fail",
       "nodeType": "feedback_fail",
       "pillar": "SST",
-      "failType": "omision_permiso_trabajo",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
+      "mediaUrl": "/assets/images/scene_q8.png",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: Permiso omitido",
-      "text": "Trabajar sin permiso formal elimina barreras de control y expone al equipo a incidentes criticos.",
-      "retryNode": "c2_dilema_1",
-      "isFeedback": true,
-      "isEnd": false,
+      "title": "Desviación en SST",
+      "text": "Una Política es el manifiesto directivo supremo que dicta el marco de acción y las fronteras éticas.",
+      "retryNode": "q8",
       "choices": [
-        { "id": "c2_retry_1A", "text": "Entendido", "nextNode": "c2_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "q8_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q8",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
       ]
     },
     {
-      "id": "c2_fail_1B",
-      "nodeType": "feedback_fail",
-      "pillar": "SST",
-      "failType": "atm_no_verificada",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: Atmosfera no verificada",
-      "text": "Sin medicion atmosferica no hay evidencia de condiciones seguras. El riesgo de asfixia o intoxicacion aumenta.",
-      "retryNode": "c2_dilema_1",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_retry_1B", "text": "Entendido", "nextNode": "c2_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-    {
-      "id": "c2_fail_1C",
-      "nodeType": "feedback_fail",
-      "pillar": "SST",
-      "failType": "exceso_confianza",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: Exceso de confianza",
-      "text": "La experiencia no reemplaza el control operativo. Los procedimientos existen para prevenir eventos graves.",
-      "retryNode": "c2_dilema_1",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_retry_1C", "text": "Entendido", "nextNode": "c2_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-
-    {
-      "id": "c2_dilema_2",
+      "id": "q9",
       "nodeType": "dilemma",
       "pillar": "SST",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_inestable.svg",
-      "audioBgm": "/assets/audio/suspenso.mp3",
-      "title": "Capitulo 2 - Dilema 2: Seleccion de EPP",
-      "text": "Se aproxima una zona con polvo en suspension, ruido alto y riesgo de impacto menor. Como defines el EPP?",
-      "isFeedback": false,
-      "isEnd": false,
+      "mediaUrl": "/assets/images/scene_q9.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "SST - Prevención",
+      "text": "Avelino evalúa los riesgos operativos. La implementación de protocolos de Seguridad y Salud en el Trabajo (SST) sirve principalmente para:",
       "choices": [
-        { "id": "c2_d2_a", "text": "Usar solo casco para agilizar la tarea.", "nextNode": "c2_fail_2A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "epp_incompleto", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c2_d2_b", "text": "Permitir que cada persona elija su EPP por comodidad.", "nextNode": "c2_fail_2B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "criterio_no_estandar", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c2_d2_c", "text": "Exigir EPP segun matriz de riesgo: casco, gafas, respirador y proteccion auditiva.", "nextNode": "c2_dilema_3", "points": 1000, "pillarPoints": { "SST": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
-        { "id": "c2_d2_d", "text": "Reutilizar EPP danado para no detener la operacion.", "nextNode": "c2_fail_2C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "epp_deteriorado", "sfx": "/assets/audio/error.mp3" }
+        {
+          "id": "q9_opt_a",
+          "text": "Cumplir un mero formalismo documental exigido por normativas.",
+          "nextNode": "q9_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q9"
+        },
+        {
+          "id": "q9_opt_b",
+          "text": "Alimentar bases de datos y registros sin impacto operativo.",
+          "nextNode": "q9_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q9"
+        },
+        {
+          "id": "q9_opt_c",
+          "text": "Asegurar la integridad física del talento humano y garantizar la continuidad del negocio.",
+          "nextNode": "q10",
+          "points": 1000,
+          "pillarPoints": {
+            "SST": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q9_opt_d",
+          "text": "Burocratizar y ralentizar la operatividad intencionalmente.",
+          "nextNode": "q9_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q9"
+        }
       ]
     },
     {
-      "id": "c2_fail_2A",
+      "id": "q9_fail",
       "nodeType": "feedback_fail",
       "pillar": "SST",
-      "failType": "epp_incompleto",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
+      "mediaUrl": "/assets/images/scene_q9.png",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: EPP incompleto",
-      "text": "Un riesgo multiple exige barreras multiples. El EPP parcial deja al personal expuesto.",
-      "retryNode": "c2_dilema_2",
-      "isFeedback": true,
-      "isEnd": false,
+      "title": "Desviación en SST",
+      "text": "SST no es burocracia; es el blindaje estructural que garantiza la integridad humana y la sostenibilidad operativa.",
+      "retryNode": "q9",
       "choices": [
-        { "id": "c2_retry_2A", "text": "Entendido", "nextNode": "c2_dilema_2", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "q9_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q9",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
       ]
     },
     {
-      "id": "c2_fail_2B",
-      "nodeType": "feedback_fail",
-      "pillar": "SST",
-      "failType": "criterio_no_estandar",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: Criterio no estandar",
-      "text": "La seguridad no puede depender de preferencias individuales. Se debe cumplir el estandar definido.",
-      "retryNode": "c2_dilema_2",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_retry_2B", "text": "Entendido", "nextNode": "c2_dilema_2", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-    {
-      "id": "c2_fail_2C",
-      "nodeType": "feedback_fail",
-      "pillar": "SST",
-      "failType": "epp_deteriorado",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: EPP deteriorado",
-      "text": "Un EPP en mal estado genera falsa seguridad. Debe reemplazarse antes de exponer al equipo.",
-      "retryNode": "c2_dilema_2",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_retry_2C", "text": "Entendido", "nextNode": "c2_dilema_2", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-
-    {
-      "id": "c2_dilema_3",
+      "id": "q10",
       "nodeType": "dilemma",
       "pillar": "SST",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_inestable.svg",
-      "audioBgm": "/assets/audio/suspenso.mp3",
-      "title": "Capitulo 2 - Dilema 3: Trabajo en altura",
-      "text": "Para recuperar un artefacto debes trabajar sobre una plataforma elevada sin barandas completas. Como procedes?",
-      "isFeedback": false,
-      "isEnd": false,
+      "mediaUrl": "/assets/images/scene_q10.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "SST - Cumplimiento",
+      "text": "Si Avelino detecta que un operador está ejecutando una maniobra de alto riesgo ignorando completamente la política de SST establecida, su primera acción debe ser:",
       "choices": [
-        { "id": "c2_d3_a", "text": "Subir de inmediato y sostenerte del borde.", "nextNode": "c2_fail_3A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "sin_linea_vida", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c2_d3_b", "text": "Usar arnes sin verificar punto de anclaje.", "nextNode": "c2_fail_3B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "anclaje_no_certificado", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c2_d3_c", "text": "Delimitar area, inspeccionar anclaje certificado y ejecutar con sistema anticaidas.", "nextNode": "c2_dilema_4", "points": 1000, "pillarPoints": { "SST": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
-        { "id": "c2_d3_d", "text": "Retirar el arnes para moverte mas rapido en la maniobra final.", "nextNode": "c2_fail_3C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "retiro_epp_critico", "sfx": "/assets/audio/error.mp3" }
+        {
+          "id": "q10_opt_a",
+          "text": "Detener inmediatamente la operación, mitigar el riesgo y reentrenar al operador.",
+          "nextNode": "q11",
+          "points": 1000,
+          "pillarPoints": {
+            "SST": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q10_opt_b",
+          "text": "Permitir la maniobra para evaluar empíricamente las consecuencias del riesgo.",
+          "nextNode": "q10_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q10"
+        },
+        {
+          "id": "q10_opt_c",
+          "text": "Documentar fotográficamente la infracción sin intervenir, para el informe mensual.",
+          "nextNode": "q10_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q10"
+        },
+        {
+          "id": "q10_opt_d",
+          "text": "Omitir la infracción asumiendo que el operador conoce su propio nivel de riesgo.",
+          "nextNode": "q10_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q10"
+        }
       ]
     },
     {
-      "id": "c2_fail_3A",
+      "id": "q10_fail",
       "nodeType": "feedback_fail",
       "pillar": "SST",
-      "failType": "sin_linea_vida",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
+      "mediaUrl": "/assets/images/scene_q10.png",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: Sin linea de vida",
-      "text": "En altura, no existe margen de error. Sin sistema anticaidas el riesgo es inaceptable.",
-      "retryNode": "c2_dilema_3",
-      "isFeedback": true,
-      "isEnd": false,
+      "title": "Desviación en SST",
+      "text": "Ante vulneraciones críticas de seguridad, la inmovilización inmediata de la operación no es opcional, es imperativa.",
+      "retryNode": "q10",
       "choices": [
-        { "id": "c2_retry_3A", "text": "Entendido", "nextNode": "c2_dilema_3", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "q10_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q10",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
       ]
     },
     {
-      "id": "c2_fail_3B",
-      "nodeType": "feedback_fail",
-      "pillar": "SST",
-      "failType": "anclaje_no_certificado",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: Anclaje no certificado",
-      "text": "El arnes sin anclaje certificado no protege. La integridad del sistema debe verificarse completa.",
-      "retryNode": "c2_dilema_3",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_retry_3B", "text": "Entendido", "nextNode": "c2_dilema_3", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-    {
-      "id": "c2_fail_3C",
-      "nodeType": "feedback_fail",
-      "pillar": "SST",
-      "failType": "retiro_epp_critico",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: Retiro de EPP critico",
-      "text": "Quitar protecciones en la etapa final es cuando mas ocurren eventos por exceso de confianza.",
-      "retryNode": "c2_dilema_3",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_retry_3C", "text": "Entendido", "nextNode": "c2_dilema_3", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-
-    {
-      "id": "c2_dilema_4",
-      "nodeType": "dilemma",
-      "pillar": "SST",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_inestable.svg",
-      "audioBgm": "/assets/audio/suspenso.mp3",
-      "title": "Capitulo 2 - Dilema 4: Riesgo electrico",
-      "text": "Una compuerta metalica quedo energizada por un cable danado. El equipo necesita abrirla para continuar. Que haces?",
-      "isFeedback": false,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_d4_a", "text": "Abrir la compuerta con guantes comunes.", "nextNode": "c2_fail_4A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "contacto_directo", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c2_d4_b", "text": "Separar el cable con herramienta metalica improvisada.", "nextNode": "c2_fail_4B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "herramienta_inadecuada", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c2_d4_c", "text": "Aislar zona, aplicar bloqueo-etiquetado (LOTO) y verificar ausencia de tension.", "nextNode": "c2_dilema_5", "points": 1000, "pillarPoints": { "SST": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
-        { "id": "c2_d4_d", "text": "Pedir a un tercero que pruebe rapidamente si da corriente.", "nextNode": "c2_fail_4C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "prueba_empirica_peligrosa", "sfx": "/assets/audio/error.mp3" }
-      ]
-    },
-    {
-      "id": "c2_fail_4A",
-      "nodeType": "feedback_fail",
-      "pillar": "SST",
-      "failType": "contacto_directo",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: Contacto directo",
-      "text": "El contacto directo con partes energizadas puede causar lesiones fatales en segundos.",
-      "retryNode": "c2_dilema_4",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_retry_4A", "text": "Entendido", "nextNode": "c2_dilema_4", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-    {
-      "id": "c2_fail_4B",
-      "nodeType": "feedback_fail",
-      "pillar": "SST",
-      "failType": "herramienta_inadecuada",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: Herramienta inadecuada",
-      "text": "Herramientas no aisladas incrementan el riesgo electrico y pueden agravar el incidente.",
-      "retryNode": "c2_dilema_4",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_retry_4B", "text": "Entendido", "nextNode": "c2_dilema_4", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-    {
-      "id": "c2_fail_4C",
-      "nodeType": "feedback_fail",
-      "pillar": "SST",
-      "failType": "prueba_empirica_peligrosa",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: Prueba empirica peligrosa",
-      "text": "Nunca se valida energia con personas. Se usan instrumentos y procedimientos de bloqueo seguros.",
-      "retryNode": "c2_dilema_4",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_retry_4C", "text": "Entendido", "nextNode": "c2_dilema_4", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-
-    {
-      "id": "c2_dilema_5",
-      "nodeType": "dilemma",
-      "pillar": "SST",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_inestable.svg",
-      "audioBgm": "/assets/audio/suspenso.mp3",
-      "title": "Capitulo 2 - Dilema 5: Reporte de incidente",
-      "text": "Un operador sufre una lesion menor y el supervisor propone continuar sin reportar para no retrasar la meta. Como respondes?",
-      "isFeedback": false,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_d5_a", "text": "Aceptar y seguir, porque fue un evento pequeno.", "nextNode": "c2_fail_5A", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "subregistro_incidente", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c2_d5_b", "text": "Registrar solo si el operador insiste formalmente.", "nextNode": "c2_fail_5B", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "reporte_condicionado", "sfx": "/assets/audio/error.mp3" },
-        { "id": "c2_d5_c", "text": "Atender al lesionado, reportar de inmediato e iniciar investigacion de causa raiz.", "nextNode": "c3_dilema_1", "points": 1000, "pillarPoints": { "SST": 1000 }, "isCorrect": true, "sfx": "/assets/audio/success.mp3" },
-        { "id": "c2_d5_d", "text": "Modificar el registro para que parezca una observacion sin lesion.", "nextNode": "c2_fail_5C", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "manipulacion_reporte", "sfx": "/assets/audio/error.mp3" }
-      ]
-    },
-    {
-      "id": "c2_fail_5A",
-      "nodeType": "feedback_fail",
-      "pillar": "SST",
-      "failType": "subregistro_incidente",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: Subregistro de incidente",
-      "text": "Lo que no se reporta no se corrige. El subregistro repite eventos y aumenta severidad futura.",
-      "retryNode": "c2_dilema_5",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_retry_5A", "text": "Entendido", "nextNode": "c2_dilema_5", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-    {
-      "id": "c2_fail_5B",
-      "nodeType": "feedback_fail",
-      "pillar": "SST",
-      "failType": "reporte_condicionado",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: Reporte condicionado",
-      "text": "Reportar incidentes no depende de preferencias. Es una obligacion para proteger a todo el equipo.",
-      "retryNode": "c2_dilema_5",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_retry_5B", "text": "Entendido", "nextNode": "c2_dilema_5", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-    {
-      "id": "c2_fail_5C",
-      "nodeType": "feedback_fail",
-      "pillar": "SST",
-      "failType": "manipulacion_reporte",
-      "mediaType": "image",
-      "mediaUrl": "/assets/images/puente_roto.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion SST: Manipulacion de reporte",
-      "text": "Alterar informacion de seguridad vulnera el SIG y bloquea acciones preventivas efectivas.",
-      "retryNode": "c2_dilema_5",
-      "isFeedback": true,
-      "isEnd": false,
-      "choices": [
-        { "id": "c2_retry_5C", "text": "Entendido", "nextNode": "c2_dilema_5", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
-      ]
-    },
-
-    {
-      "id": "c3_dilema_1",
+      "id": "q11",
       "nodeType": "dilemma",
       "pillar": "SIG",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/calidad_dilema.svg",
+      "mediaUrl": "/assets/images/scene_q11.png",
       "audioBgm": "/assets/audio/misterio.mp3",
-      "title": "Dilema de Calidad",
-      "text": "Frente a la puerta del tesoro hay un mecanismo antiguo desarmado. Hay un pergamino con instrucciones detalladas, pero tu crees saber como encajan las piezas a simple vista.",
-      "isFeedback": false,
-      "isEnd": false,
+      "title": "Calidad - Eficiencia",
+      "text": "La estructura organizacional requiere optimización para alcanzar la competitividad deseada. ¿Por qué es fundamental que las empresas trabajen bajo un enfoque por procesos?",
       "choices": [
-        { "id": "sig_fail_proceso", "text": "Armarlo a prueba y error ignorando el pergamino para ahorrar tiempo.", "nextNode": "fail_sig_proceso", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "proceso_saltado", "sfx": "/assets/audio/error.mp3" },
-        { "id": "sig_fail_falso", "text": "Forzar una pieza que no encaja y documentar que el mecanismo estaba roto.", "nextNode": "fail_sig_falso", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "registro_falso", "sfx": "/assets/audio/error.mp3" },
-        { "id": "sig_correct", "text": "Seguir el pergamino paso a paso, verificando cada engranaje antes de avanzar.", "nextNode": "end_success", "points": 10, "pillarPoints": { "SIG": 10 }, "isCorrect": true, "sfx": "/assets/audio/triumph.mp3" },
-        { "id": "sig_fail_noconf", "text": "Usar piezas sobrantes de tu inventario para reemplazar las que parecen desgastadas.", "nextNode": "fail_sig_noconf", "points": 0, "pillarPoints": {}, "isCorrect": false, "failType": "no_conformidad", "sfx": "/assets/audio/error.mp3" }
+        {
+          "id": "q11_opt_a",
+          "text": "Para garantizar que las operaciones se ejecuten de forma estructurada, controlada y eficiente.",
+          "nextNode": "q12",
+          "points": 1000,
+          "pillarPoints": {
+            "SIG": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q11_opt_b",
+          "text": "Para incrementar el volumen de documentación exigida por la certificación.",
+          "nextNode": "q11_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q11"
+        },
+        {
+          "id": "q11_opt_c",
+          "text": "Para justificar el aumento de comités y reuniones interdepartamentales.",
+          "nextNode": "q11_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q11"
+        },
+        {
+          "id": "q11_opt_d",
+          "text": "Para superar exclusivamente los requerimientos de la auditoría externa.",
+          "nextNode": "q11_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q11"
+        }
       ]
     },
     {
-      "id": "fail_sig_proceso",
+      "id": "q11_fail",
       "nodeType": "feedback_fail",
       "pillar": "SIG",
-      "failType": "proceso_saltado",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/calidad_error.svg",
+      "mediaUrl": "/assets/images/scene_q11.png",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Proceso Omitido",
-      "text": "El mecanismo se atasco. La estandarizacion de procesos es nuestra firma de excelencia. Ignorar los procedimientos operativos estandar (SOP) compromete el resultado final.",
-      "retryNode": "c3_dilema_1",
-      "isFeedback": true,
-      "isEnd": false,
+      "title": "Desviación en SIG",
+      "text": "La gestión por procesos elimina la fragmentación (los 'silos') e instaura una cadena de valor productiva y medible.",
+      "retryNode": "q11",
       "choices": [
-        { "id": "retry_sig_1", "text": "Revisar Procedimiento (SOP)", "nextNode": "c3_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "q11_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q11",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
       ]
     },
     {
-      "id": "fail_sig_falso",
-      "nodeType": "feedback_fail",
+      "id": "q12",
+      "nodeType": "dilemma",
       "pillar": "SIG",
-      "failType": "registro_falso",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/calidad_error.svg",
-      "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion Grave: Registro Falso",
-      "text": "Falsificar un reporte para ocultar un error es una violacion severa al Sistema Integrado de Gestion (SIG). La transparencia es vital para la mejora continua.",
-      "retryNode": "c3_dilema_1",
-      "isFeedback": true,
-      "isEnd": false,
+      "mediaUrl": "/assets/images/scene_q12.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Calidad - Estructura",
+      "text": "En el marco de un Sistema de Gestión Integral, ¿cómo se define un 'proceso' dentro de una organización?",
       "choices": [
-        { "id": "retry_sig_2", "text": "Entender la Importancia del SIG", "nextNode": "c3_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "q12_opt_a",
+          "text": "Una actividad aislada ejecutada por un solo colaborador.",
+          "nextNode": "q12_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q12"
+        },
+        {
+          "id": "q12_opt_b",
+          "text": "Un conjunto interrelacionado de actividades que transforman elementos de entrada en resultados de valor.",
+          "nextNode": "q13",
+          "points": 1000,
+          "pillarPoints": {
+            "SIG": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q12_opt_c",
+          "text": "Un manual físico de instrucciones técnicas.",
+          "nextNode": "q12_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q12"
+        },
+        {
+          "id": "q12_opt_d",
+          "text": "Una sesión de planificación estratégica.",
+          "nextNode": "q12_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q12"
+        }
       ]
     },
     {
-      "id": "fail_sig_noconf",
+      "id": "q12_fail",
       "nodeType": "feedback_fail",
       "pillar": "SIG",
-      "failType": "no_conformidad",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/calidad_error.svg",
+      "mediaUrl": "/assets/images/scene_q12.png",
       "audioBgm": "/assets/audio/fail.mp3",
-      "title": "Desviacion: Material No Conforme",
-      "text": "Introducir materiales no verificados en un proceso critico genera no conformidades. Cada pieza debe pasar por control de calidad antes de su uso.",
-      "retryNode": "c3_dilema_1",
-      "isFeedback": true,
-      "isEnd": false,
+      "title": "Desviación en SIG",
+      "text": "Un Proceso es la maquinaria sistémica que convierte insumos brutos en resultados de alto valor percibido.",
+      "retryNode": "q12",
       "choices": [
-        { "id": "retry_sig_3", "text": "Revisar Control de Calidad", "nextNode": "c3_dilema_1", "points": 0, "pillarPoints": {}, "isCorrect": false, "sfx": "/assets/audio/click.mp3" }
+        {
+          "id": "q12_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q12",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
+      ]
+    },
+    {
+      "id": "q13",
+      "nodeType": "dilemma",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q13.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Calidad - Ejecución",
+      "text": "Todo macroproceso se desglosa en unidades más manejables para su correcta ejecución y monitoreo. ¿Qué es una actividad dentro de un proceso?",
+      "choices": [
+        {
+          "id": "q13_opt_a",
+          "text": "Un bloque fundamental de ejecución para cumplir un hito dentro de un proceso mayor.",
+          "nextNode": "q14",
+          "points": 1000,
+          "pillarPoints": {
+            "SIG": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q13_opt_b",
+          "text": "El objetivo macro estratégico del proceso.",
+          "nextNode": "q13_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q13"
+        },
+        {
+          "id": "q13_opt_c",
+          "text": "El entregable final que se presenta a la Gerencia.",
+          "nextNode": "q13_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q13"
+        },
+        {
+          "id": "q13_opt_d",
+          "text": "El líder funcional del macroproceso.",
+          "nextNode": "q13_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q13"
+        }
+      ]
+    },
+    {
+      "id": "q13_fail",
+      "nodeType": "feedback_fail",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q13.png",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviación en SIG",
+      "text": "Una Actividad es el engranaje metodológico indispensable para movilizar el proceso hacia su meta principal.",
+      "retryNode": "q13",
+      "choices": [
+        {
+          "id": "q13_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q13",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
+      ]
+    },
+    {
+      "id": "q14",
+      "nodeType": "dilemma",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q14.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Calidad - Estandarización",
+      "text": "Para asegurar que las tareas se realicen de manera consistente y sin desviaciones, se requiere documentación técnica. ¿Qué es un procedimiento?",
+      "choices": [
+        {
+          "id": "q14_opt_a",
+          "text": "Un auditor externo que certifica el proceso.",
+          "nextNode": "q14_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q14"
+        },
+        {
+          "id": "q14_opt_b",
+          "text": "Una matriz de indicadores de rendimiento (KPIs).",
+          "nextNode": "q14_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q14"
+        },
+        {
+          "id": "q14_opt_c",
+          "text": "El documento técnico que estandariza el paso a paso metodológico para ejecutar una actividad.",
+          "nextNode": "q15",
+          "points": 1000,
+          "pillarPoints": {
+            "SIG": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q14_opt_d",
+          "text": "El entregable final producido por la cadena de valor.",
+          "nextNode": "q14_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q14"
+        }
+      ]
+    },
+    {
+      "id": "q14_fail",
+      "nodeType": "feedback_fail",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q14.png",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviación en SIG",
+      "text": "Sin un Procedimiento documentado, el conocimiento es inestable y las operaciones pierden repetibilidad y calidad.",
+      "retryNode": "q14",
+      "choices": [
+        {
+          "id": "q14_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q14",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
+      ]
+    },
+    {
+      "id": "q15",
+      "nodeType": "dilemma",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q15.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Calidad - Verificación",
+      "text": "La gestión del riesgo es inherente a la operativa empresarial. En esta línea, ¿qué función cumple un 'control' dentro de un proceso?",
+      "choices": [
+        {
+          "id": "q15_opt_a",
+          "text": "Un mecanismo sistemático diseñado para prevenir, detectar y corregir desviaciones operativas.",
+          "nextNode": "q16",
+          "points": 1000,
+          "pillarPoints": {
+            "SIG": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q15_opt_b",
+          "text": "Un paso optativo que se aplica únicamente cuando hay exceso de recursos.",
+          "nextNode": "q15_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q15"
+        },
+        {
+          "id": "q15_opt_c",
+          "text": "Una junta directiva de revisión de resultados trimestrales.",
+          "nextNode": "q15_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q15"
+        },
+        {
+          "id": "q15_opt_d",
+          "text": "Un requerimiento legal sin impacto en la calidad del resultado final.",
+          "nextNode": "q15_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q15"
+        }
+      ]
+    },
+    {
+      "id": "q15_fail",
+      "nodeType": "feedback_fail",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q15.png",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviación en SIG",
+      "text": "Los Controles son las barreras arquitectónicas que aseguran que el output mantenga las especificaciones de calidad.",
+      "retryNode": "q15",
+      "choices": [
+        {
+          "id": "q15_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q15",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
+      ]
+    },
+    {
+      "id": "q16",
+      "nodeType": "dilemma",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q16.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Calidad - Liderazgo",
+      "text": "Para garantizar el cumplimiento de los indicadores y la mejora continua, se requiere designar autoridad. ¿Quién es el responsable de un proceso?",
+      "choices": [
+        {
+          "id": "q16_opt_a",
+          "text": "Cualquier colaborador operativo que ejecute una tarea específica del flujo.",
+          "nextNode": "q16_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q16"
+        },
+        {
+          "id": "q16_opt_b",
+          "text": "El rol o área investida de autoridad para garantizar el rendimiento y cumplimiento de los objetivos del proceso.",
+          "nextNode": "q17",
+          "points": 1000,
+          "pillarPoints": {
+            "SIG": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q16_opt_c",
+          "text": "El usuario final que recibe el producto o servicio.",
+          "nextNode": "q16_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q16"
+        },
+        {
+          "id": "q16_opt_d",
+          "text": "Cualquier miembro del Comité Estratégico.",
+          "nextNode": "q16_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q16"
+        }
+      ]
+    },
+    {
+      "id": "q16_fail",
+      "nodeType": "feedback_fail",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q16.png",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviación en SIG",
+      "text": "La rendición de cuentas (accountability) de un proceso entero recae en el Líder asignado, no en operadores sueltos.",
+      "retryNode": "q16",
+      "choices": [
+        {
+          "id": "q16_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q16",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
+      ]
+    },
+    {
+      "id": "q17",
+      "nodeType": "dilemma",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q17.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Calidad - Sistematización",
+      "text": "Avelino analiza la data, proyecta la ruta y da la instrucción al equipo operativo. En el esquema del SIG, ¿qué representan cada una de estas acciones interconectadas para lograr el objetivo final?",
+      "choices": [
+        {
+          "id": "q17_opt_a",
+          "text": "Representan 'Controles' estadísticos aislados.",
+          "nextNode": "q17_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q17"
+        },
+        {
+          "id": "q17_opt_b",
+          "text": "Representan 'Actividades' secuenciales que conforman un 'Proceso' integral.",
+          "nextNode": "q18",
+          "points": 1000,
+          "pillarPoints": {
+            "SIG": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q17_opt_c",
+          "text": "Representan iniciativas de Cultura Organizacional.",
+          "nextNode": "q17_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q17"
+        },
+        {
+          "id": "q17_opt_d",
+          "text": "Son contingencias operativas sin catalogación en Sistemas de Gestión.",
+          "nextNode": "q17_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q17"
+        }
+      ]
+    },
+    {
+      "id": "q17_fail",
+      "nodeType": "feedback_fail",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q17.png",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviación en SIG",
+      "text": "El alineamiento de tareas interdependientes es lo que orquesta verdaderamente la Cadena de Valor.",
+      "retryNode": "q17",
+      "choices": [
+        {
+          "id": "q17_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q17",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
+      ]
+    },
+    {
+      "id": "q18",
+      "nodeType": "dilemma",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q18.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Calidad - Herramientas",
+      "text": "La expedición cuenta con manuales técnicos y listas de verificación. La diferencia conceptual entre el 'procedimiento' (el manual) y el 'control' (el checklist) radica en:",
+      "choices": [
+        {
+          "id": "q18_opt_a",
+          "text": "Ambos conceptos son semánticamente idénticos en ingeniería de procesos.",
+          "nextNode": "q18_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q18"
+        },
+        {
+          "id": "q18_opt_b",
+          "text": "El procedimiento establece la metodología estándar (el cómo), y el control verifica su cumplimiento y previene desviaciones.",
+          "nextNode": "q19",
+          "points": 1000,
+          "pillarPoints": {
+            "SIG": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q18_opt_c",
+          "text": "El procedimiento es de estricto cumplimiento, mientras que el control es sugerido.",
+          "nextNode": "q18_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q18"
+        },
+        {
+          "id": "q18_opt_d",
+          "text": "El control es diseñado por la Alta Gerencia y el procedimiento por los operarios.",
+          "nextNode": "q18_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q18"
+        }
+      ]
+    },
+    {
+      "id": "q18_fail",
+      "nodeType": "feedback_fail",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q18.png",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviación en SIG",
+      "text": "Mientras el Procedimiento enseña el método correcto, el Control previene fallos mitigando la variabilidad.",
+      "retryNode": "q18",
+      "choices": [
+        {
+          "id": "q18_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q18",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
+      ]
+    },
+    {
+      "id": "q19",
+      "nodeType": "dilemma",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q19.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Calidad - Mejora Continua",
+      "text": "Si Avelino nota que un control preventivo ha dejado de ser efectivo debido a la obsolescencia técnica de los recursos, su proceder correcto es:",
+      "choices": [
+        {
+          "id": "q19_opt_a",
+          "text": "Mantener la operación asumiendo el riesgo residual implícito.",
+          "nextNode": "q19_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q19"
+        },
+        {
+          "id": "q19_opt_b",
+          "text": "Descartar el control unilateralmente sin notificar al líder del proceso.",
+          "nextNode": "q19_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q19"
+        },
+        {
+          "id": "q19_opt_c",
+          "text": "Escalar de inmediato la desviación al responsable del proceso fundamentando la actualización técnica requerida.",
+          "nextNode": "q20",
+          "points": 1000,
+          "pillarPoints": {
+            "SIG": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        },
+        {
+          "id": "q19_opt_d",
+          "text": "Burlar el control inútil para acelerar los tiempos de ejecución.",
+          "nextNode": "q19_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q19"
+        }
+      ]
+    },
+    {
+      "id": "q19_fail",
+      "nodeType": "feedback_fail",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q19.png",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviación en SIG",
+      "text": "La Mejora Continua exige que frente a controles ineficaces, se documenten y propongan actualizaciones inmediatas.",
+      "retryNode": "q19",
+      "choices": [
+        {
+          "id": "q19_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q19",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
+      ]
+    },
+    {
+      "id": "q20",
+      "nodeType": "dilemma",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q20.png",
+      "audioBgm": "/assets/audio/misterio.mp3",
+      "title": "Misión Cumplida",
+      "text": "Al concluir el proyecto, Avelino y su equipo alcanzan los máximos estándares de Excelencia. Este éxito sostenido a largo plazo es atribuible principalmente a:",
+      "choices": [
+        {
+          "id": "q20_opt_a",
+          "text": "La volatilidad favorable del entorno logístico competitivo.",
+          "nextNode": "q20_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q20"
+        },
+        {
+          "id": "q20_opt_b",
+          "text": "La inversión desmedida en tecnologías sobre-dimensionadas.",
+          "nextNode": "q20_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q20"
+        },
+        {
+          "id": "q20_opt_c",
+          "text": "La ejecución individualista y aislada de metas desconectadas.",
+          "nextNode": "q20_fail",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/error.mp3",
+          "failType": "error_q20"
+        },
+        {
+          "id": "q20_opt_d",
+          "text": "La integración sinérgica de procesos estandarizados, políticas rigorosas de SST y una sólida Cultura Organizacional.",
+          "nextNode": "end_success",
+          "points": 1000,
+          "pillarPoints": {
+            "SIG": 1000
+          },
+          "isCorrect": true,
+          "sfx": "/assets/audio/success.mp3",
+          "failType": "none"
+        }
+      ]
+    },
+    {
+      "id": "q20_fail",
+      "nodeType": "feedback_fail",
+      "pillar": "SIG",
+      "mediaType": "image",
+      "mediaUrl": "/assets/images/scene_q20.png",
+      "audioBgm": "/assets/audio/fail.mp3",
+      "title": "Desviación en SIG",
+      "text": "La excelencia sostenible es la suma innegociable de procesos eficientes, talento seguro y una sólida cultura compartida.",
+      "retryNode": "q20",
+      "choices": [
+        {
+          "id": "q20_fail_retry",
+          "text": "Entendido, revaluar estrategia",
+          "nextNode": "q20",
+          "points": 0,
+          "pillarPoints": {},
+          "isCorrect": false,
+          "sfx": "/assets/audio/click.mp3"
+        }
       ]
     },
     {
@@ -790,12 +1546,10 @@
       "nodeType": "end",
       "pillar": "none",
       "mediaType": "image",
-      "mediaUrl": "/assets/images/tesoro_encontrado.svg",
+      "mediaUrl": "/assets/images/scene_q12.png",
       "audioBgm": "/assets/audio/victoria.mp3",
-      "title": "Expedicion Completada",
-      "text": "Has demostrado tu capacidad para tomar decisiones seguras y eticas en cada pilar de Avellano.",
-      "isFeedback": false,
-      "isEnd": true,
+      "title": "gestión Completada!",
+      "text": "Felicidades, llegaste al final! Has demostrado que dominas los pilares de la organización. Eres un verdadero aventurero Avellano!",
       "choices": []
     }
   ]

@@ -6,7 +6,7 @@ export const MuteButton = () => {
   return (
     <button
       onClick={toggleMute}
-      className="fixed top-5 right-5 z-50 p-3 bg-black/50 hover:bg-black/80
+      className="fixed bottom-5 right-5 z-50 p-3 bg-black/50 hover:bg-black/80
         backdrop-blur-sm rounded-full text-white border border-white/20
         transition-all duration-200 hover:scale-110 cursor-pointer"
       aria-label={isMuted ? 'Activar sonido' : 'Silenciar sonido'}
