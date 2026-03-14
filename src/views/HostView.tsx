@@ -188,7 +188,7 @@ export const HostView = () => {
   }, [phase]);
 
   useEffect(() => {
-    if (!roomId || phase !== 'VOTING_RESULTS' || !gameState.currentNodeId) {
+    if (!roomId || (phase !== 'QUESTION' && phase !== 'VOTING_RESULTS') || !gameState.currentNodeId) {
       setResponses({});
       return;
     }
@@ -253,15 +253,19 @@ export const HostView = () => {
   // Auto-advance to VOTING_RESULTS when all players have responded (don't wait full timer)
   useEffect(() => {
     if (!roomId || phase !== 'QUESTION' || players.length === 0) return;
+    
+    const connectedPlayers = players.filter(p => p.connected).length;
+    if (connectedPlayers < 1) return; // Safety check
+
     const totalVoted = Object.keys(responses).length;
-    if (totalVoted > 0 && totalVoted >= players.length && !autoPhaseLockRef.current) {
+    if (totalVoted >= connectedPlayers && !autoPhaseLockRef.current) {
       autoPhaseLockRef.current = true;
       // Short visual delay so players see the question briefly before stats appear
       setTimeout(() => {
         update(ref(db, `rooms/${roomId}/meta`), { phase: 'VOTING_RESULTS' });
-      }, 2000);
+      }, 1000);
     }
-  }, [roomId, phase, responses, players.length]);
+  }, [roomId, phase, responses, players, players.length]);
 
   useEffect(() => {
     if (!roomId || phase !== 'QUESTION' || !gameState.endsAt) return;
