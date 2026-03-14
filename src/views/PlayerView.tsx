@@ -34,6 +34,7 @@ export const PlayerView = () => {
   const [gameState, setGameState] = useState<RoomGameState>({});
   const [remainingMs, setRemainingMs] = useState(0);
   const [hasVoted, setHasVoted] = useState(false);
+  const [lastChoiceId, setLastChoiceId] = useState<string | null>(null);
   const [leaderboardEntries, setLeaderboardEntries] = useState<LeaderboardEntry[]>([]);
   const [isDangerTime, setIsDangerTime] = useState(false);
 
@@ -75,6 +76,7 @@ export const PlayerView = () => {
 
   useEffect(() => {
     setHasVoted(false);
+    setLastChoiceId(null);
   }, [gameState.currentNodeId]);
 
   useEffect(() => {
@@ -125,6 +127,7 @@ export const PlayerView = () => {
     if (hasVoted || remainingMs <= 0) return;
 
     setHasVoted(true);
+    setLastChoiceId(choice.id);
 
     const now = Date.now();
     const responseMs = Math.max(0, now - gameState.startedAt);
@@ -272,10 +275,13 @@ export const PlayerView = () => {
   if (joined && phase === 'FEEDBACK_LOOP') {
     const correctIndex = currentQuestionNode?.choices.findIndex(c => c.isCorrect) ?? -1;
     const correctChoice = correctIndex >= 0 ? currentQuestionNode?.choices[correctIndex] : null;
+    const isActuallyCorrect = lastChoiceId && correctChoice && lastChoiceId === correctChoice.id;
 
     return (
       <main className="min-h-screen bg-black text-white flex flex-col p-6 items-center justify-center text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-green-400 font-bold mb-6">¡Respuesta Correcta!</p>
+        <p className={`text-xs uppercase tracking-[0.3em] font-bold mb-6 ${isActuallyCorrect ? 'text-green-400' : 'text-red-500'}`}>
+          {isActuallyCorrect ? '¡Respuesta Correcta!' : 'Respuesta Incorrecta'}
+        </p>
 
         <div className="w-32 h-32 mb-6 drop-shadow-[0_0_20px_rgba(255,255,255,0.4)] animate-bounce">
           {correctIndex === 0 && <svg viewBox="0 0 100 100" className="w-full h-full text-red-500 fill-current drop-shadow-[0_0_15px_rgba(239,68,68,0.8)]"><polygon points="50,15 90,85 10,85" /></svg>}
@@ -339,18 +345,22 @@ export const PlayerView = () => {
         <p className="text-gray-400 mb-6">PIN: <span className="text-avellano-red font-black tracking-widest">{roomId}</span></p>
 
         <form onSubmit={handleJoin} className="space-y-4">
-          <label htmlFor="player-name" className="block text-sm font-bold text-gray-300">
-            Tu Nombre
+          <label htmlFor="player-cedula" className="block text-sm font-bold text-gray-300">
+            Tu Cédula
           </label>
           <input
-            id="player-name"
+            id="player-cedula"
             type="text"
+            inputMode="numeric"
             value={playerName}
-            onChange={(event) => setPlayerName(event.target.value)}
-            placeholder="Ej: Ana"
-            maxLength={24}
+            onChange={(event) => {
+              const val = event.target.value.replace(/\D/g, ''); // Extract only digits
+              setPlayerName(val);
+            }}
+            placeholder="Ej: 123456789"
+            maxLength={12}
             className="w-full rounded-xl border border-white/15 bg-black/50 px-4 py-4 text-lg text-white
-              focus:outline-none focus:ring-2 focus:ring-avellano-red focus:border-avellano-red"
+              focus:outline-none focus:ring-2 focus:ring-avellano-red focus:border-avellano-red transition-all"
           />
 
           <button
