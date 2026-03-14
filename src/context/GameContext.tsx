@@ -69,6 +69,7 @@ interface GameContextType {
   isMuted: boolean;
   makeChoice: (choice: Choice, node: StoryNode) => void;
   resetGame: () => void;
+  skipNode: () => void;
   toggleMute: () => void;
 }
 
@@ -144,6 +145,13 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
     setCurrentNodeId(choice.nextNode);
   };
 
+  const skipNode = () => {
+    const correctChoice = currentNode.choices.find(c => c.isCorrect);
+    if (correctChoice) {
+      makeChoice(correctChoice, currentNode);
+    }
+  };
+
   const resetGame = () => {
     setCurrentNodeId('start');
     setScore(initialScore());
@@ -154,7 +162,7 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
   const toggleMute = () => setIsMuted(prev => !prev);
 
   return (
-    <GameContext.Provider value={{ currentNode, score, history, failHistory, isMuted, makeChoice, resetGame, toggleMute }}>
+    <GameContext.Provider value={{ currentNode, score, history, failHistory, isMuted, makeChoice, resetGame, skipNode, toggleMute }}>
       {children}
     </GameContext.Provider>
   );

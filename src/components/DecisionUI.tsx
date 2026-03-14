@@ -1,17 +1,44 @@
 import { useGameState } from '../hooks/useGameState';
 
 export const DecisionUI = () => {
-  const { currentNode, makeChoice } = useGameState();
+  const { currentNode, makeChoice, resetGame, skipNode } = useGameState();
 
   return (
     <div className="relative z-20 flex flex-col justify-end min-h-screen p-4 md:p-8 pointer-events-none pb-4 md:pb-8 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
-
-      {/* TEXTO DE HISTORIA: Bottom HUD estilo cinematográfico */}
+      
+      {/* BOTONES DE NAVEGACIÓN RÁPIDA: Top Right Overlay */}
+      <div className="fixed top-6 right-6 z-50 flex gap-4 pointer-events-auto animate-fade-in-down">
+        {currentNode.id.startsWith('q') && (
+          <button 
+            onClick={skipNode}
+            className="px-5 py-2.5 rounded-xl border border-white/10 bg-black/40 backdrop-blur-md text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white hover:border-avellano-red/50 hover:bg-avellano-red/20 transition-all duration-300 flex items-center gap-2 group"
+          >
+            <svg viewBox="0 0 24 24" className="w-3 h-3 fill-current">
+              <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+            </svg>
+            Saltar Pregunta
+          </button>
+        )}
+        <button 
+          onClick={resetGame}
+          className="px-5 py-2.5 rounded-xl border border-white/10 bg-black/40 backdrop-blur-md text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-red-500 hover:border-red-500/50 hover:bg-red-900/20 transition-all duration-300 flex items-center gap-2"
+        >
+          <svg viewBox="0 0 24 24" className="w-3 h-3 fill-none stroke-current stroke-[3]">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+          Salir al Menú
+        </button>
+      </div>
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center mt-auto mb-6">
         <div className="px-6 py-5 md:px-10 md:py-8 rounded-3xl border border-[var(--color-glass-border)] bg-[#0a0a0a]/80 backdrop-blur-2xl shadow-2xl pointer-events-auto w-full text-center
           animate-fade-in-up transition-all duration-500 hover:shadow-[0_0_20px_rgba(211,17,17,0.2)]">
           <div className="flex flex-col items-center justify-center gap-3 mb-3 md:flex-row">
-            <h2 className="text-xl md:text-3xl font-black text-white tracking-widest uppercase drop-shadow-[0_0_10px_rgba(0,0,0,0.8)]">
+            <h2 className="text-xl md:text-3xl font-black text-white tracking-widest uppercase drop-shadow-[0_0_10px_rgba(0,0,0,0.8)] flex items-center gap-3">
+              {currentNode.id.startsWith('q') && (
+                <span className="text-avellano-red drop-shadow-[0_0_8px_rgba(230,0,0,0.6)]">
+                  #{currentNode.id.match(/\d+/)?.[0]}
+                </span>
+              )}
               {currentNode.title}
             </h2>
             {currentNode.pillar !== 'none' && (

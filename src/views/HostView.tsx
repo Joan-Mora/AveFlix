@@ -560,7 +560,9 @@ export const HostView = () => {
           <div className="mx-auto max-w-7xl rounded-xl border border-avellano-red bg-avellano-dark/85 backdrop-blur-xl px-4 py-3 shadow-[0_0_30px_rgba(230,0,0,0.3)]">
             <div className="flex items-start md:items-center justify-between gap-3">
               <div className="flex-1">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-avellano-red font-bold leading-none mb-1">Fase QUESTION</p>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-avellano-red font-bold leading-none mb-1">
+                  Pregunta {currentNode.id.match(/\d+/)?.[0] ?? '?'} / 20
+                </p>
                 <h1 className="text-base md:text-2xl font-black truncate leading-tight">{currentNode.title}</h1>
               </div>
               <div className="text-right shrink-0">
@@ -664,7 +666,7 @@ export const HostView = () => {
         <section className="relative z-10 mx-auto w-full max-w-5xl rounded-3xl border border-avellano-red/35 bg-avellano-dark/85 backdrop-blur-xl p-6 md:p-8 shadow-[0_0_45px_rgba(230,0,0,0.2)]">
           <div className="mb-6 flex items-end justify-between gap-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-avellano-red font-bold mb-2">Fase VOTING_RESULTS</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-avellano-red font-bold mb-2">Pregunta {currentNode.id.match(/\d+/)?.[0] ?? '?'} / 20</p>
               <h1 className="text-2xl md:text-4xl font-black">Resultados de votacion</h1>
             </div>
             <p className="text-sm md:text-base text-gray-300">Votos totales: <span className="font-black text-white">{totalVotes}</span></p>

@@ -192,7 +192,7 @@ export const PlayerView = () => {
     return (
       <main className={`min-h-screen bg-black text-white px-4 py-6 transition-all duration-300 ${isDangerTime ? 'shadow-[inset_0_0_80px_rgba(255,0,0,0.4)]' : ''}`}>
         <section className={`mx-auto w-full max-w-xl rounded-3xl border ${isDangerTime ? 'border-red-500' : 'border-avellano-red/30'} bg-avellano-dark/90 backdrop-blur-xl p-5 shadow-[0_0_35px_rgba(230,0,0,0.18)] transition-colors duration-300`}>
-          <p className="text-xs uppercase tracking-[0.35em] text-avellano-red mb-4 font-bold">Pregunta en curso</p>
+          <p className="text-xs uppercase tracking-[0.35em] text-avellano-red mb-4 font-bold">Pregunta {currentQuestionNode.id.match(/\d+/)?.[0] ?? '?'} / 20</p>
 
           <div className="mb-4">
             <div className="h-2 rounded-full bg-black/60 border border-white/10 overflow-hidden">
@@ -369,20 +369,16 @@ export const PlayerView = () => {
         <p className="text-gray-400 mb-6">PIN: <span className="text-avellano-red font-black tracking-widest">{roomId}</span></p>
 
         <form onSubmit={handleJoin} className="space-y-4">
-          <label htmlFor="player-cedula" className="block text-sm font-bold text-gray-300">
-            Tu Cédula
+          <label htmlFor="player-name" className="block text-sm font-bold text-gray-300">
+            Tu Nombre
           </label>
           <input
-            id="player-cedula"
+            id="player-name"
             type="text"
-            inputMode="numeric"
             value={playerName}
-            onChange={(event) => {
-              const val = event.target.value.replace(/\D/g, ''); // Extract only digits
-              setPlayerName(val);
-            }}
-            placeholder="Ej: 123456789"
-            maxLength={12}
+            onChange={(event) => setPlayerName(event.target.value)}
+            placeholder="Ej: Juan Pérez"
+            maxLength={30}
             className="w-full rounded-xl border border-white/15 bg-black/50 px-4 py-4 text-lg text-white
               focus:outline-none focus:ring-2 focus:ring-avellano-red focus:border-avellano-red transition-all"
           />
