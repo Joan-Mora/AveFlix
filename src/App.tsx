@@ -89,13 +89,39 @@ const HomeView = () => {
 
   return (
     <GameProvider>
-      <main className="relative w-full h-screen overflow-hidden bg-black text-white font-sans">
-        <GameController />
+      <HomeViewContent 
+        showJoinPanel={showJoinPanel} 
+        setShowJoinPanel={setShowJoinPanel}
+        pin={pin}
+        setPin={setPin}
+        handleCreateRoom={handleCreateRoom}
+        handleJoinByPin={handleJoinByPin}
+        handleClearAllRooms={handleClearAllRooms}
+      />
+    </GameProvider>
+  );
+};
 
-        {/* Capa oscura superior para dar contraste a los botones superiores si se necesita, aunque ahora los centraremos visualmente */}
-        
-        {/* Botones globales de Lobby agrupados arriba a la izquierda para no estorbar con Avelino a la derecha */}
-        <div className="fixed top-5 left-5 md:top-8 md:left-8 z-50 flex flex-col md:flex-row items-start gap-4">
+const HomeViewContent = ({ 
+  showJoinPanel, 
+  setShowJoinPanel, 
+  pin, 
+  setPin, 
+  handleCreateRoom, 
+  handleJoinByPin,
+  handleClearAllRooms 
+}: any) => {
+  const navigate = useNavigate();
+  const { currentNode } = useGameState();
+  const isStart = currentNode.nodeType === 'start';
+
+  return (
+    <main className="relative w-full h-screen overflow-hidden bg-black text-white font-sans">
+      <GameController />
+
+      {/* Botones globales: Solo visibles en pantalla de inicio del single player */}
+      {isStart && (
+        <div className="fixed top-5 left-5 md:top-8 md:left-8 z-50 flex flex-col md:flex-row items-start gap-4 animate-fade-in">
           <button
             onClick={handleCreateRoom}
             className="px-6 py-3 rounded-full bg-avellano-red text-white text-sm md:text-base font-black tracking-widest uppercase
@@ -169,8 +195,8 @@ const HomeView = () => {
             </form>
           )}
         </div>
-      </main>
-    </GameProvider>
+      )}
+    </main>
   );
 };
 

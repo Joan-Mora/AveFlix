@@ -51,7 +51,7 @@ export const MediaViewer = () => {
           className="w-full h-full object-cover"
         />
       ) : (
-        <div className="relative w-full h-[95%] flex items-center justify-center overflow-hidden bg-black pt-4 pb-[45vh] md:pb-[40vh] mx-auto my-auto">
+        <div className="relative w-full h-[90%] flex items-center justify-center overflow-hidden bg-black pt-4 pb-[50vh] md:pb-[45vh] mx-auto my-auto">
           {/* Fondo difuminado y oscurecido para no perder la esencia cinematográfica */}
           <div 
             className="absolute inset-0 z-0 bg-no-repeat bg-cover bg-center filter blur-xl opacity-30 scale-110"
@@ -59,7 +59,7 @@ export const MediaViewer = () => {
           />
 
           {/* Contenedor Cuadrado con Borde Rojo y Bordes Redondeados */}
-          <div className="relative z-10 w-full max-w-[45vw] md:max-w-[40vh] aspect-square rounded-3xl border-[5px] border-avellano-red overflow-hidden shadow-[0_0_40px_rgba(211,17,17,0.4)] transition-all duration-500 hover:scale-105">
+          <div className="relative z-10 w-full max-w-[40vw] md:max-w-[35vh] aspect-square rounded-3xl border-[5px] border-avellano-red overflow-hidden shadow-[0_0_40px_rgba(211,17,17,0.4)] transition-all duration-500 hover:scale-105">
             <img
               key={displayNode.mediaUrl}
               src={displayNode.mediaUrl}

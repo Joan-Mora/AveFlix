@@ -37,6 +37,7 @@ export const PlayerView = () => {
   const [lastChoiceId, setLastChoiceId] = useState<string | null>(null);
   const [leaderboardEntries, setLeaderboardEntries] = useState<LeaderboardEntry[]>([]);
   const [isDangerTime, setIsDangerTime] = useState(false);
+  const [wasCanceled, setWasCanceled] = useState(false);
 
   const cleanName = useMemo(() => playerName.trim(), [playerName]);
   const currentQuestionNode = useMemo(() => {
@@ -55,6 +56,9 @@ export const PlayerView = () => {
     const unsubscribePhase = onValue(phaseRef, (snapshot) => {
       const nextPhase = snapshot.val() as RoomPhase | null;
       setPhase(nextPhase ?? 'LOBBY');
+      if (nextPhase === 'CANCELED') {
+        setWasCanceled(true);
+      }
     });
 
     const unsubscribeGameState = onValue(gameStateRef, (snapshot) => {
@@ -298,9 +302,9 @@ export const PlayerView = () => {
     );
   }
 
-  if (joined && phase === 'CANCELED') {
+  if (joined && (phase === 'CANCELED' || wasCanceled)) {
     return (
-      <main className="min-h-screen bg-black text-white px-4 py-8 flex items-center justify-center">
+      <main className="min-h-screen bg-black text-white px-4 py-8 flex items-center justify-center animate-fade-in">
         <section className="w-full max-w-md rounded-3xl border border-red-500/30 bg-avellano-dark/85 backdrop-blur-xl p-8 text-center shadow-[0_0_35px_rgba(230,0,0,0.18)]">
           <p className="text-xs uppercase tracking-[0.35em] text-red-500 mb-4 font-bold">AveFlix Live · Player</p>
           <h1 className="text-3xl font-black mb-3 text-red-100">Partida Finalizada</h1>

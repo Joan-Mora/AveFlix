@@ -4,7 +4,7 @@ export const DecisionUI = () => {
   const { currentNode, makeChoice } = useGameState();
 
   return (
-    <div className="relative z-20 flex flex-col justify-end min-h-screen p-4 md:p-8 pointer-events-none pb-8 md:pb-12 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+    <div className="relative z-20 flex flex-col justify-end min-h-screen p-4 md:p-8 pointer-events-none pb-4 md:pb-8 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
 
       {/* TEXTO DE HISTORIA: Bottom HUD estilo cinematográfico */}
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center mt-auto mb-6">
@@ -27,7 +27,7 @@ export const DecisionUI = () => {
       </div>
 
       {/* BOTONES: Rejilla elegante en la parte más inferior */}
-      <div className="w-full max-w-6xl mx-auto pointer-events-auto">
+      <div className="w-full max-w-5xl mx-auto pointer-events-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {currentNode.choices.map((choice, index) => (
             <button
