@@ -151,6 +151,20 @@ export const HostView = () => {
     };
   }, [roomId]);
 
+  // Pre-carga silenciosa de imágenes del juego
+  useEffect(() => {
+    const allNodes = (storyData.nodes ?? []) as StoryNode[];
+    const imageUrls = allNodes
+      .filter(node => node.mediaType === 'image')
+      .map(node => node.mediaUrl);
+    
+    console.log(`[HostView] Pre-cargando ${imageUrls.length} imágenes...`);
+    imageUrls.forEach(url => {
+      const img = new Image();
+      img.src = url;
+    });
+  }, []);
+
   // Manejo de BGM y transiciones de Fase Global del Host
   useEffect(() => {
     // Pedir interaccion inicial pasiva (autoplay BGM cuando la fase cambie significa que ya inició)
@@ -561,6 +575,15 @@ export const HostView = () => {
             <div className="mt-3 h-1.5 rounded-full bg-black/60 overflow-hidden">
                <div className="h-full bg-avellano-red transition-[width]" style={{ width: `${progressPct}%` }} />
             </div>
+            
+            <div className="mt-3 flex justify-end">
+              <button 
+                onClick={handleCancelGame}
+                className="px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-red-500 border border-white/5 hover:border-red-500/30 transition-all duration-300"
+              >
+                Cancelar Partida
+              </button>
+            </div>
           </div>
         </div>
 
@@ -658,7 +681,13 @@ export const HostView = () => {
             ))}
           </div>
 
-          <div className="mt-8 flex justify-end">
+          <div className="mt-8 flex justify-between items-center">
+            <button 
+              onClick={handleCancelGame}
+              className="px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest text-gray-500 hover:text-red-500 border border-white/5 hover:border-red-500/30 transition-all duration-300"
+            >
+              Cancelar Partida
+            </button>
             <button
               onClick={handleShowConsequences}
               className="px-8 py-4 rounded-full bg-avellano-red hover:bg-red-700 text-white text-lg font-black tracking-wide
@@ -724,13 +753,21 @@ export const HostView = () => {
             {explanationText}
           </p>
 
-          <button
-            onClick={handleAdvanceFromFeedback}
-            className="px-10 py-4 rounded-full bg-avellano-red hover:bg-red-700 text-white text-lg font-black tracking-wide
-              transition-all duration-300 hover:scale-105 shadow-[0_0_24px_rgba(230,0,0,0.4)] cursor-pointer"
-          >
-            Siguiente
-          </button>
+          <div className="mt-10 flex justify-between items-center w-full">
+            <button 
+              onClick={handleCancelGame}
+              className="px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest text-gray-500 hover:text-red-500 border border-white/5 hover:border-red-500/30 transition-all duration-300"
+            >
+              Cancelar Partida
+            </button>
+            <button
+              onClick={handleAdvanceFromFeedback}
+              className="px-10 py-4 rounded-full bg-avellano-red hover:bg-red-700 text-white text-lg font-black tracking-wide
+                transition-all duration-300 hover:scale-105 shadow-[0_0_24px_rgba(230,0,0,0.4)] cursor-pointer"
+            >
+              Siguiente
+            </button>
+          </div>
         </section>
       </main>
     );
