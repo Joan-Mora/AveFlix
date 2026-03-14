@@ -13,7 +13,7 @@ type Player = {
   connected: boolean;
 };
 
-type RoomPhase = 'LOBBY' | 'QUESTION' | 'VOTING_RESULTS' | 'FEEDBACK_LOOP' | 'LEADERBOARD';
+type RoomPhase = 'LOBBY' | 'QUESTION' | 'VOTING_RESULTS' | 'FEEDBACK_LOOP' | 'LEADERBOARD' | 'CANCELED';
 
 type RoomGameState = {
   currentNodeId?: string;
@@ -307,6 +307,32 @@ export const HostView = () => {
         console.log('[HostView] Room reset successfully');
       } catch (err) {
         console.warn('[HostView] Error resetting room:', err);
+      }
+    }
+  };
+
+  /** Cancela la partida en curso y notifica a todos */
+  const handleCancelGame = async () => {
+    if (!roomId) return;
+    if (window.confirm('¿Estás seguro de que deseas CANCELAR la partida? Esto expulsará a todos los jugadores y borrará los datos de la sala.')) {
+      try {
+        // Notificamos fase CANCELED primero
+        await update(ref(db, `rooms/${roomId}/meta`), { phase: 'CANCELED' });
+        
+        // Pequeña espera para que los clientes vean el mensaje antes del borrado masivo
+        setTimeout(async () => {
+          await update(ref(db, `rooms/${roomId}`), {
+            players: {},
+            responses: {},
+            gameState: {},
+            leaderboard: { entries: [] },
+            'meta/phase': 'LOBBY'
+          });
+          navigate('/');
+        }, 1500);
+      } catch (err) {
+        console.warn('[HostView] Error canceling game:', err);
+        navigate('/');
       }
     }
   };
@@ -789,21 +815,50 @@ export const HostView = () => {
                     </div>
                   </li>
                 ))}
-              </ul>
+                </ul>
               </div>
             </div>
           )}
 
           {/* BUTTON SECTION (Shrink 0) */}
           <div className="flex justify-center shrink-0">
-            <button
-              onClick={handleFinalize}
-              className="px-8 md:px-10 py-3 md:py-4 rounded-full bg-avellano-red hover:bg-red-700 text-white text-base md:text-lg font-black tracking-wide
-                transition-all duration-300 hover:scale-105 shadow-[0_0_24px_rgba(230,0,0,0.4)] cursor-pointer"
+            <button 
+              onClick={handleCancelGame}
+              className="px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest text-gray-500 hover:text-red-500 border border-white/5 hover:border-red-500/30 transition-all duration-300"
             >
-              Finalizar Capacitacion
+              Cancelar Partida
+            </button>
+
+            <button 
+              onClick={handleFinalize}
+              className="px-8 py-4 rounded-2xl bg-black/60 border border-white/10 text-white font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 shadow-2xl"
+            >
+              Finalizar Capacitación
             </button>
           </div>
+        </section>
+      </main>
+    );
+  }
+
+  if (phase === 'CANCELED') {
+    return (
+      <main className="min-h-screen bg-black text-white p-4 md:p-8 flex items-center justify-center">
+        <section className="mx-auto w-full max-w-2xl rounded-3xl border border-red-500/40 bg-avellano-dark/85 backdrop-blur-xl shadow-[0_0_50px_rgba(230,0,0,0.15)] p-6 md:p-10 text-center">
+          <p className="text-xs md:text-sm uppercase tracking-[0.35em] text-red-500 mb-3 font-bold">
+            Partida Cancelada
+          </p>
+          <h1 className="text-3xl md:text-5xl font-black leading-tight mb-4">La Expedición ha sido Interrumpida</h1>
+          <p className="text-gray-400 mb-8">
+            La partida actual ha sido cancelada por el anfitrión. Puedes volver al menú principal para iniciar una nueva expedición.
+          </p>
+          <button
+            onClick={() => navigate('/')}
+            className="px-8 md:px-10 py-4 rounded-full bg-avellano-red hover:bg-red-700 text-white text-lg font-black tracking-wide
+              transition-all duration-300 hover:scale-105 shadow-[0_0_24px_rgba(230,0,0,0.4)] cursor-pointer"
+          >
+            Volver al Menú Principal
+          </button>
         </section>
       </main>
     );
@@ -846,7 +901,18 @@ export const HostView = () => {
 
           <div className="flex-1 w-full">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl md:text-3xl font-black">Jugadores en Lobby</h2>
+              <div className="flex items-center gap-3">
+                <button 
+                  onClick={() => navigate('/')}
+                  className="p-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-gray-400 hover:text-white"
+                  title="Volver al Menú"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <h2 className="text-2xl md:text-3xl font-black">Jugadores en Lobby</h2>
+              </div>
               <div className="flex items-center gap-4">
                 <button 
                   onClick={handleResetRoom}

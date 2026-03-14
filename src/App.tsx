@@ -11,6 +11,8 @@ import type { FormEvent } from 'react';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import { HostView } from './views/HostView';
 import { PlayerView } from './views/PlayerView';
+import { ref, set } from 'firebase/database';
+import { db } from './services/firebase';
 import './index.css';
 
 // Orquestador: decide qué pantalla de UI mostrar según el estado del nodo
@@ -73,6 +75,18 @@ const HomeView = () => {
     navigate(`/play/${normalizedPin}`);
   };
 
+  const handleClearAllRooms = async () => {
+    if (window.confirm('¿Deseas ELIMINAR TODAS las salas activas de la base de datos? Esto invalidará todas las sesiones actuales.')) {
+      try {
+        await set(ref(db, 'rooms'), {});
+        alert('Todas las salas han sido eliminadas correctamente.');
+      } catch (err) {
+        console.warn('[HomeView] Error clearing rooms:', err);
+        alert('Error al limpiar las salas.');
+      }
+    }
+  };
+
   return (
     <GameProvider>
       <main className="relative w-full h-screen overflow-hidden bg-black text-white font-sans">
@@ -97,6 +111,15 @@ const HomeView = () => {
               backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:bg-white/10 cursor-pointer shadow-2xl"
           >
             Ver Historial
+          </button>
+
+          <button
+            onClick={handleClearAllRooms}
+            className="px-6 py-3 rounded-full bg-black/40 border border-white/5 text-gray-500 text-[10px] md:text-xs font-bold tracking-widest uppercase
+              backdrop-blur-md transition-all duration-300 hover:text-red-500 hover:border-red-500/30 cursor-pointer"
+            title="Mantenimiento: Borrar todas las salas"
+          >
+            Limpiar Todas las Salas
           </button>
 
           {!showJoinPanel ? (

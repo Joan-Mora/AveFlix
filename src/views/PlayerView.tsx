@@ -5,7 +5,7 @@ import { onDisconnect, onValue, ref, set } from 'firebase/database';
 import { db } from '../services/firebase';
 import storyData from '../data/storyNodes.json';
 
-type RoomPhase = 'LOBBY' | 'QUESTION' | 'VOTING_RESULTS' | 'FEEDBACK_LOOP' | 'LEADERBOARD';
+type RoomPhase = 'LOBBY' | 'QUESTION' | 'VOTING_RESULTS' | 'FEEDBACK_LOOP' | 'LEADERBOARD' | 'CANCELED';
 
 type RoomGameState = {
   currentNodeId?: string;
@@ -294,6 +294,26 @@ export const PlayerView = () => {
           <h2 className="text-xl md:text-2xl font-black mb-4 text-white">{correctChoice.text}</h2>
         )}
         <p className="text-gray-500 text-sm mt-4">Mira la pantalla principal para ver la explicación.</p>
+      </main>
+    );
+  }
+
+  if (joined && phase === 'CANCELED') {
+    return (
+      <main className="min-h-screen bg-black text-white px-4 py-8 flex items-center justify-center">
+        <section className="w-full max-w-md rounded-3xl border border-red-500/30 bg-avellano-dark/85 backdrop-blur-xl p-8 text-center shadow-[0_0_35px_rgba(230,0,0,0.18)]">
+          <p className="text-xs uppercase tracking-[0.35em] text-red-500 mb-4 font-bold">AveFlix Live · Player</p>
+          <h1 className="text-3xl font-black mb-3 text-red-100">Partida Finalizada</h1>
+          <p className="text-gray-300 leading-relaxed">El anfitrión ha cancelado la expedición actual.</p>
+          <div className="mt-8">
+             <button 
+               onClick={() => window.location.href = '/'}
+               className="w-full px-6 py-3 rounded-xl bg-avellano-red text-white font-bold tracking-widest uppercase transition-all hover:bg-red-700"
+             >
+               Volver al Inicio
+             </button>
+          </div>
+        </section>
       </main>
     );
   }
