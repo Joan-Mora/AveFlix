@@ -277,12 +277,12 @@ export const PlayerView = () => {
   }
 
   if (joined && phase === 'FEEDBACK_LOOP') {
-    const correctIndex = currentQuestionNode?.choices.findIndex(c => c.isCorrect) ?? -1;
-    const correctChoice = correctIndex >= 0 ? currentQuestionNode?.choices[correctIndex] : null;
+    const correctIndex = currentQuestionNode?.choices?.findIndex(c => c.isCorrect) ?? -1;
+    const correctChoice = correctIndex >= 0 ? currentQuestionNode?.choices?.[correctIndex] : null;
     const isActuallyCorrect = lastChoiceId && correctChoice && lastChoiceId === correctChoice.id;
 
     return (
-      <main className="min-h-screen bg-black text-white flex flex-col p-6 items-center justify-center text-center">
+      <main translate="no" className="min-h-screen bg-black text-white flex flex-col p-6 items-center justify-center text-center">
         <p className={`text-xs uppercase tracking-[0.3em] font-bold mb-6 ${isActuallyCorrect ? 'text-green-400' : 'text-red-500'}`}>
           {isActuallyCorrect ? '¡Respuesta Correcta!' : 'Respuesta Incorrecta'}
         </p>
