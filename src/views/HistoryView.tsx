@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { ref, onValue, query, orderByChild } from 'firebase/database';
+import { ref, onValue } from 'firebase/database';
 import { db } from '../services/firebase';
 import { useNavigate } from 'react-router-dom';
 
