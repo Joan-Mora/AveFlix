@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { ref, onValue } from 'firebase/database';
+import { ref, onValue, query, orderByChild, limitToLast } from 'firebase/database';
 import { db } from '../services/firebase';
 import { useNavigate } from 'react-router-dom';
 
@@ -55,8 +55,11 @@ export const HistoryView = () => {
 
   // ── Load history from Firebase ─────────────────────────────────────────────
   useEffect(() => {
+    // Limitamos la carga a las últimas 20 sesiones para mantener la velocidad
     const histRef = ref(db, 'history');
-    const unsub = onValue(histRef, (snapshot) => {
+    const recentQuery = query(histRef, orderByChild('playedAt'), limitToLast(20));
+    
+    const unsub = onValue(recentQuery, (snapshot) => {
       const raw = snapshot.val() as Record<string, Omit<MatchSession, 'sessionId'>> | null;
       if (!raw) { setSessions([]); setLoading(false); return; }
 

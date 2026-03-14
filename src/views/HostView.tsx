@@ -295,6 +295,21 @@ export const HostView = () => {
   };
 
   // handleNextFeedback removed as it's no longer a queue
+  
+  /** Limpieza manual de la sala (solo Lobby) */
+  const handleResetRoom = async () => {
+    if (!roomId) return;
+    if (window.confirm('¿Estás seguro de que deseas eliminar a todos los jugadores y respuestas de esta sala?')) {
+      try {
+        await set(ref(db, `rooms/${roomId}/players`), {});
+        await set(ref(db, `rooms/${roomId}/responses`), {});
+        await update(ref(db, `rooms/${roomId}/meta`), { phase: 'LOBBY' });
+        console.log('[HostView] Room reset successfully');
+      } catch (err) {
+        console.warn('[HostView] Error resetting room:', err);
+      }
+    }
+  };
 
   const handleGoLeaderboard = async () => {
     if (!roomId) return;
@@ -331,6 +346,16 @@ export const HostView = () => {
       try {
         const histRef = push(ref(db, 'history'));
         await set(histRef, sessionPayload);
+        
+        // --- OPTIMIZACIÓN: Limpiar sala tras guardar ---
+        await update(ref(db, `rooms/${roomId}`), {
+          players: {},
+          responses: {},
+          gameState: {},
+          leaderboard: { entries: [] },
+          'meta/phase': 'LOBBY'
+        });
+        
       } catch (err) {
         console.warn('[HistoryView] Could not save history:', err);
       }
@@ -822,7 +847,15 @@ export const HostView = () => {
           <div className="flex-1 w-full">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl md:text-3xl font-black">Jugadores en Lobby</h2>
-              <span className="text-sm text-gray-400">{players.length} conectados</span>
+              <div className="flex items-center gap-4">
+                <button 
+                  onClick={handleResetRoom}
+                  className="text-[10px] uppercase tracking-wider text-gray-500 hover:text-avellano-red transition-colors font-bold border border-white/5 px-2 py-1 rounded"
+                >
+                  Limpiar Sala
+                </button>
+                <span className="text-sm text-gray-400">{players.length} conectados</span>
+              </div>
             </div>
 
             <div className="h-[45vh] lg:h-[350px] rounded-2xl border border-white/10 bg-black/35 p-2 overflow-hidden flex flex-col">
