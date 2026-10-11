@@ -4,7 +4,8 @@
  */
 'use strict';
 const https = require('https');
-const FIREBASE_DB_URL = 'https://aveflix-55a78-default-rtdb.firebaseio.com';
+const FIREBASE_DB_URL = process.env.FIREBASE_DB_URL;
+if (!FIREBASE_DB_URL) { console.error('Set FIREBASE_DB_URL (e.g. https://<project>-default-rtdb.firebaseio.com)'); process.exit(1); }
 const ROOM_ID = process.argv[2];
 if (!ROOM_ID) { console.error('Usage: node cleanup_bots.cjs <PIN>'); process.exit(1); }
 

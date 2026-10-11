@@ -8,7 +8,7 @@
  *
  * Prerequisites:
  *   - Run: npm install node-fetch@2  (or use native fetch on Node 18+)
- *   - Set FIREBASE_DB_URL and ROOM_ID below.
+ *   - Set the FIREBASE_DB_URL environment variable and pass the room PIN.
  *   - The host room must be open (in LOBBY phase or QUESTION phase).
  *
  * Run: node load_test.cjs
@@ -18,7 +18,8 @@ const https = require('https');
 const http = require('http');
 
 // ─── CONFIG ────────────────────────────────────────────────────────────────
-const FIREBASE_DB_URL = 'https://aveflix-55a78-default-rtdb.firebaseio.com'; // Your Firebase RTDB URL
+const FIREBASE_DB_URL = process.env.FIREBASE_DB_URL; // Your Firebase RTDB URL
+if (!FIREBASE_DB_URL) { console.error('Set FIREBASE_DB_URL (e.g. https://<project>-default-rtdb.firebaseio.com)'); process.exit(1); }
 const ROOM_ID         = process.argv[2] || 'TESTROOM';  // Pass room PIN as arg: node load_test.cjs V9NHWG
 const NUM_PLAYERS     = 400;
 const BATCH_SIZE      = 50;   // Players per batch (to avoid overwhelming the event loop)
